@@ -36,4 +36,6 @@ export type User = {
   keywords: string[];
   /** Profile/site start date in YYYY-MM-DD */
   dateCreated: string;
+  timeZone: string;
+  resumeUrl: string;
 };

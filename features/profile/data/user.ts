@@ -25,6 +25,8 @@ export const USER: User = {
     },
     {
       title: "Freelance Full-Stack Developer",
+      company: "AlterIt",
+      website: "https://www.instagram.com/_alterit",
     },
   ],
   about: `
@@ -51,5 +53,8 @@ Let's connect and collaborate!
     "accelya",
     "softwaredeveloper",
   ],
+  timeZone: "Asia/Kolkata",
   dateCreated: "2025-10-20", // YYYY-MM-DD
+  resumeUrl:
+    "https://drive.google.com/file/d/1bvd2dHcFDCIAR3NPpmUIf9NVoeAs0scC/view?usp=sharing",
 };

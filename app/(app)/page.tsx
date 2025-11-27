@@ -1,3 +1,4 @@
+import { Overview } from "@/features/overview/overview";
 import { ProfileHeader } from "@/features/profile/components/profile-header";
 import { USER } from "@/features/profile/data/user";
 import { cn } from "@/lib/utils";
@@ -20,7 +21,7 @@ export default function Page() {
         <ProfileHeader />
         <Separator />
 
-        {/* <Overview /> */}
+        <Overview />
         <Separator />
 
         {/* <SocialLinks /> */}
@@ -89,13 +90,13 @@ function DiffSeparator({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen h-12",
-        "aspect-8/1 border-t border-edge select-none sm:aspect-16/1",
-        "flex items-center justify-center text-white",
-        "screen-line-before screen-line-after before:-top-px after:-bottom-px",
-        "bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/56",
+        "relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen h-12 select-none",
+        "flex items-center justify-center",
+        "border-t border-b border-edge",
         className
       )}
-    />
+    >
+      <div className="mx-auto md:max-w-3xl w-full border-x border-edge h-full pointer-events-none" />
+    </div>
   );
 }

@@ -1,0 +1,57 @@
+import {
+  Braces,
+  BriefcaseBusinessIcon,
+  CodeXmlIcon,
+  LightbulbIcon,
+} from "lucide-react";
+
+import { UTM_PARAMS } from "@/config/site";
+import { addQueryParams } from "@/utils/url";
+
+import {
+  IntroItem,
+  IntroItemContent,
+  IntroItemIcon,
+  IntroItemLink,
+} from "./intro-item";
+
+function getJobIcon(title: string) {
+  if (/(engineer)/i.test(title)) {
+    return <CodeXmlIcon />;
+  }
+
+  if (/(developer)/i.test(title)) {
+    return <Braces />;
+  }
+
+  if (/(founder|co-founder)/i.test(title)) {
+    return <LightbulbIcon />;
+  }
+
+  return <BriefcaseBusinessIcon />;
+}
+
+type JobItemProps = {
+  title: string;
+  company: string | undefined;
+  website: string | undefined;
+};
+
+export function JobItem({ title, company, website }: JobItemProps) {
+  return (
+    <IntroItem>
+      <IntroItemIcon>{getJobIcon(title)}</IntroItemIcon>
+
+      <IntroItemContent>
+        {title} @
+        <IntroItemLink
+          className="ml-0.5 font-medium"
+          href={addQueryParams(website!, UTM_PARAMS)}
+          aria-label={`${company} website`}
+        >
+          {company}
+        </IntroItemLink>
+      </IntroItemContent>
+    </IntroItem>
+  );
+}

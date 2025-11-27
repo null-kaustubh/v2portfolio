@@ -26,8 +26,8 @@ export function ProfileHeader() {
         >
           <div className="line-clamp-1 font-mono text-xs text-zinc-800 select-none max-sm:hidden">
             {"text-3xl "}
-            <span className="inline">text-zinc-950</span>
-            {" font-medium"}
+            <span className="inline">text-zinc-800</span>
+            {" font-semibold"}
           </div>
         </div>
 
