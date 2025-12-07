@@ -1,6 +1,7 @@
 import { Overview } from "@/features/overview/overview";
 import { ProfileHeader } from "@/features/profile/components/profile-header";
 import { USER } from "@/features/profile/data/user";
+import SocialLinks from "@/features/socials/SocialLinks";
 import { cn } from "@/lib/utils";
 import dayjs from "dayjs";
 import Link from "next/link";
@@ -37,14 +38,14 @@ export default function Page() {
           <ContentWrapper>
             <Overview />
           </ContentWrapper>
+
+          <ContentWrapper>
+            <SocialLinks />
+          </ContentWrapper>
         </div>
       </div>
 
-      {/* <SocialLinks /> */}
-
       {/* <About /> */}
-
-      {/* <GitHubContributions /> */}
 
       {/* <TeckStack /> */}
 
