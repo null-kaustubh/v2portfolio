@@ -84,7 +84,7 @@ export function Overview() {
         </div>
       </PanelContent>
 
-      <div className="pointer-events-none absolute -inset-x-px inset-y-0 rounded-2xl border" />
+      <div className="pointer-events-none absolute -inset-x-px inset-y-0" />
     </Panel>
   );
 }

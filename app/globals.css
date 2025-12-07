@@ -1,11 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
-  /* zinc-950 */
-  --background: oklch(0.141 0.005 285.823);
+  --background: oklch(21.6% 0.006 56.043);
 
   /* zinc-50 */
   --foreground: oklch(0.985 0 0);
@@ -14,16 +11,16 @@
   --primary: oklch(0.37 0.013 285.805);
 
   /* zinc-50 */
-  --primary-foreground: oklch(0.985 0 0);
+  --primary-foreground: oklch(92.3% 0.003 48.717);
 
   /* zinc-800 */
   --secondary: oklch(0.274 0.006 286.033);
 
   /* zinc-50 */
-  --secondary-foreground: oklch(0.985 0 0);
+  --secondary-foreground: oklch(70.9% 0.01 56.259);
 
   /* zinc-800 */
-  --muted: oklch(0.274 0.006 286.033);
+  --muted: oklch(26.8% 0.007 34.298);
 
   /* zinc-400 */
   --muted-foreground: oklch(0.705 0.015 286.067);
@@ -52,9 +49,9 @@
   --accent-foreground: oklch(0.985 0 0);
 
   /* zinc-800 */
-  --border: oklch(0.274 0.006 286.033);
+  --border: oklch(37.4% 0.01 67.558);
 
-  --edge: color-mix(in oklab, var(--border) 64%, var(--background));
+  --edge: oklch(37.4% 0.01 67.558);
 
   /* zinc-800 */
   --input: oklch(0.274 0.006 286.033);
@@ -84,10 +81,10 @@
   --code-highlight: oklch(0.274 0.006 286.033);
 
   /* zinc-50 */
-  --selection: oklch(0.985 0 0);
+  --selection: oklch(70.5% 0.213 47.604);
 
   /* zinc-950 */
-  --selection-foreground: oklch(0.141 0.005 285.823);
+  --selection-foreground: oklch(21.6% 0.006 56.043);
 
   --shadow-popover: 0 0 24px rgba(0, 0, 0, 0.5);
 }
@@ -124,8 +121,8 @@
   --color-selection: var(--selection);
   --color-selection-foreground: var(--selection-foreground);
 
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
+  --font-sans: var(--font-sf-pro-display);
+  --font-mono: var(--font-departure-mono);
 
   --shadow-popover: var(--shadow-popover);
 
@@ -190,7 +187,7 @@
 }
 
 body {
-  font-family: var(--font-ibmPlex-mono);
+  font-family: var(--font-sf-pro-display);
 }
 
 @layer base {
@@ -216,7 +213,7 @@ body {
     text-rendering: optimizeLegibility;
   }
 
-  /* Custom scrollbar styling. Thanks @shadcn-ui */
+  /* Custom scrollbar styling */
   ::-webkit-scrollbar {
     width: 5px;
   }
@@ -235,57 +232,6 @@ body {
   [id] {
     @apply scroll-mt-22;
   }
-
-  /* Thanks https://theme-toggle.rdsx.dev */
-  /* polygon */
-  /* ::view-transition-group(root) {
-    animation-duration: 0.8s;
-    animation-timing-function: linear(
-      0 0%,
-      0.1684 2.66%,
-      0.3165 5.49%,
-      0.446 8.52%,
-      0.5581 11.78%,
-      0.6535 15.29%,
-      0.7341 19.11%,
-      0.8011 23.3%,
-      0.8557 27.93%,
-      0.8962 32.68%,
-      0.9283 38.01%,
-      0.9529 44.08%,
-      0.9711 51.14%,
-      0.9833 59.06%,
-      0.9915 68.74%,
-      1 100%
-    );
-  }
-  ::view-transition-new(root) {
-    animation-name: reveal-light;
-  }
-  ::view-transition-old(root),
-  .dark::view-transition-old(root) {
-    animation: none;
-    z-index: -1;
-  }
-  .dark::view-transition-new(root) {
-    animation-name: reveal-dark;
-  }
-  @keyframes reveal-dark {
-    from {
-      clip-path: polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%);
-    }
-    to {
-      clip-path: polygon(50% -71%, -50% 71%, 50% 171%, 171% 50%);
-    }
-  }
-  @keyframes reveal-light {
-    from {
-      clip-path: polygon(171% 50%, 50% 171%, 50% 171%, 171% 50%);
-    }
-    to {
-      clip-path: polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%);
-    }
-  } */
 }
 
 @layer components {
@@ -306,7 +252,7 @@ body {
   }
 
   [data-line] span {
-    @apply text-(--shiki-light) dark:text-(--shiki-dark);
+    @apply text-(--shiki-dark);
   }
 
   [data-rehype-pretty-code-title] {
