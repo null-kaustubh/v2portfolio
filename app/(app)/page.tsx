@@ -2,9 +2,9 @@ import { Overview } from "@/features/overview/overview";
 import { ProfileHeader } from "@/features/profile/components/profile-header";
 import { USER } from "@/features/profile/data/user";
 import SocialLinks from "@/features/socials/SocialLinks";
+import TopBar from "@/features/topbar/topbar";
 import { cn } from "@/lib/utils";
 import dayjs from "dayjs";
-import Link from "next/link";
 import { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
 export default function Page() {
@@ -115,37 +115,5 @@ function ContentWrapper({
 
       {children}
     </div>
-  );
-}
-
-function TopBar() {
-  return (
-    <header className="relative w-full bg-background">
-      {/* FULL-WIDTH BOTTOM BORDER */}
-      <div className="absolute inset-x-0 bottom-0 h-px bg-edge" />
-
-      {/* CENTERED CONTENT */}
-      <div className="relative mx-auto md:max-w-4xl lg:max-w-4xl border-x border-edge">
-        <div className="flex h-10 items-center justify-between px-4 text-sm font-mono text-secondary-foreground">
-          <Link href={"/"}>
-            <span className="text-xl text-secondary-foreground tracking-wide">
-              KS
-            </span>
-          </Link>
-
-          <nav className="flex items-center gap-4">
-            <a href="#overview" className="underline-offset-4 hover:underline">
-              Overview
-            </a>
-            <a href="#projects" className="underline-offset-4 hover:underline">
-              Projects
-            </a>
-            <a href="#contact" className="underline-offset-4 hover:underline">
-              Contact
-            </a>
-          </nav>
-        </div>
-      </div>
-    </header>
   );
 }
