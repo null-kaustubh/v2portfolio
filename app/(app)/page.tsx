@@ -1,7 +1,9 @@
+import Career from "@/features/career-path/components/career";
 import { Overview } from "@/features/overview/overview";
 import { ProfileHeader } from "@/features/profile/components/profile-header";
 import { USER } from "@/features/profile/data/user";
 import SocialLinks from "@/features/socials/SocialLinks";
+import { TechStack } from "@/features/techstack/components/techstack";
 import TopBar from "@/features/topbar/topbar";
 import { cn } from "@/lib/utils";
 import dayjs from "dayjs";
@@ -42,12 +44,18 @@ export default function Page() {
           <ContentWrapper>
             <SocialLinks />
           </ContentWrapper>
+
+          <ContentWrapper>
+            <Career />
+          </ContentWrapper>
+
+          <ContentWrapper>
+            <TechStack />
+          </ContentWrapper>
         </div>
       </div>
 
       {/* <About /> */}
-
-      {/* <TeckStack /> */}
 
       {/* <Blog /> */}
 

@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { links } from "./links";
+import { Panel } from "../panel";
 
 export default function SocialLinks() {
   return (
-    <div className="screen-line-before screen-line-after">
+    <Panel className="screen-line-before screen-line-after">
       <div className="p-4 font-mono text-sm text-secondary-foreground">
         <div
           className="flex flex-col divide-y divide-edge md:grid md:divide-y-0 md:divide-x"
@@ -28,6 +29,6 @@ export default function SocialLinks() {
           ))}
         </div>
       </div>
-    </div>
+    </Panel>
   );
 }
