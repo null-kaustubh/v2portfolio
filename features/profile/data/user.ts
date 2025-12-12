@@ -43,12 +43,13 @@ Still learning. Still building. Every day, a little better.
 Let's connect and collaborate!
   `,
   avatar: "https://wallpapercave.com/wp/wp12731490.jpg",
-  ogImage:
-    "https://assets.chanhdai.com/images/screenshot-og-image-light.png?t=1759581475",
+  ogImage: "https://assets.kaustubh.cloud/images/og-image.png",
   keywords: [
     "kaustubhsankhe",
     "kaustubh",
     "kaustubh sankhe",
+    "mumbai",
+    "borivali west",
     "nullkaustubh",
     "accelya",
     "softwaredeveloper",

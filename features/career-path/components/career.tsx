@@ -1,4 +1,4 @@
-import { Panel, PanelHeader, PanelTitle } from "@/features/panel";
+import { Panel, PanelContent, PanelHeader, PanelTitle } from "@/features/panel";
 
 export default function Career() {
   return (
