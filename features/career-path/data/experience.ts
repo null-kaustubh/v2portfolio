@@ -16,7 +16,7 @@ export const Experience: ExperienceList = [
     company: "Saint-Gobain INDEC",
     logo: "https://assets.kaustubh.cloud/workplaces/INDEC.png",
     role: "Salesforce Developer",
-    employmentType: "intern",
+    employmentType: "internship",
     status: "ended",
     from: "2024-08",
     to: "2024-12",

@@ -54,20 +54,11 @@ export default function Page() {
           </ContentWrapper>
         </div>
       </div>
-
-      {/* <About /> */}
-
-      {/* <Blog /> */}
-
-      {/* <Experiences /> */}
-
       {/* <Projects /> */}
 
       {/* <Awards /> */}
 
       {/* <Certifications /> */}
-
-      {/* <Brand /> */}
     </>
   );
 }

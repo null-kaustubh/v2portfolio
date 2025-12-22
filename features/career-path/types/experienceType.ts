@@ -1,10 +1,4 @@
-export type EmploymentType =
-  | "fulltime"
-  | "parttime"
-  | "intern"
-  | "freelance"
-  | "contract"
-  | null;
+export type EmploymentType = "fulltime" | "internship" | "freelance" | null;
 
 export type JobStatus = "active" | "ended";
 
