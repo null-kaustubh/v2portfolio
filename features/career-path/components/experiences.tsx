@@ -32,7 +32,7 @@ export function ExperienceRow({ item }: Props) {
         <div className="flex flex-1 flex-col gap-1">
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1">
-              <p className="font-medium text-sm sm:text-lg leading-none lowercase">
+              <p className="font-medium text-md sm:text-lg leading-none lowercase">
                 {item.company}
               </p>
 

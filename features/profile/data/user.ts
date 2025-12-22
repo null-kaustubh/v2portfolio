@@ -52,7 +52,7 @@ Let's connect and collaborate!
     "borivali west",
     "nullkaustubh",
     "accelya",
-    "softwaredeveloper",
+    "software developer",
   ],
   timeZone: "Asia/Kolkata",
   dateCreated: "2025-10-20", // YYYY-MM-DD
