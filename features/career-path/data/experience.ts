@@ -9,8 +9,9 @@ export const Experience: ExperienceList = [
     status: "ended",
     from: "2021-11",
     to: "2025-06",
-    description:
+    description: [
       "Studied CS fundamentals with a strong focus on web development and real-world projects.",
+    ],
   },
   {
     company: "Saint-Gobain INDEC",
@@ -20,8 +21,10 @@ export const Experience: ExperienceList = [
     status: "ended",
     from: "2024-08",
     to: "2024-12",
-    description:
-      "Automated workflows with Salesforce Flows, built reports and dashboards, supported a production go-live, and worked with Apex and Salesforce administration.",
+    description: [
+      "Automated workflows with Salesforce Flows, built reports and dashboards.",
+      "supported a production go-live, and worked with Apex and Salesforce administration.",
+    ],
   },
   {
     company: "AlterIt",
@@ -31,8 +34,10 @@ export const Experience: ExperienceList = [
     status: "active",
     from: "2024-07",
     to: null,
-    description:
-      "Built and delivered client-facing web applications with modern stacks, focused on SEO improvements, performance optimization, codebase refactoring, and ongoing Wix and WordPress maintenance.",
+    description: [
+      "Built and delivered client-facing web applications with modern stacks, focused on SEO improvements, performance optimization, codebase refactoring.",
+      "ongoing Wix and WordPress maintenance.",
+    ],
   },
   {
     company: "Accelya",
@@ -42,7 +47,8 @@ export const Experience: ExperienceList = [
     status: "active",
     from: "2025-09",
     to: null,
-    description:
+    description: [
       "Working on enterprise backend systems using core Java and large-scale legacy codebases.",
+    ],
   },
 ];

@@ -5,6 +5,7 @@ import type { ExperienceItem } from "../types/experienceType";
 import { formatDateRange } from "@/lib/formatDate";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronRight } from "lucide-react";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 type Props = {
   item: ExperienceItem;
@@ -12,6 +13,7 @@ type Props = {
 
 export function ExperienceRow({ item }: Props) {
   const [open, setOpen] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 640px)");
 
   return (
     <div
@@ -49,7 +51,11 @@ export function ExperienceRow({ item }: Props) {
             </div>
 
             <div className="ml-auto flex items-center gap-2 whitespace-nowrap text-[11px] sm:text-xs font-mono text-secondary-foreground">
-              <span>{formatDateRange(item.from, item.to, item.status)}</span>
+              <span>
+                {formatDateRange(item.from, item.to, item.status, {
+                  shortMonth: isMobile,
+                })}
+              </span>
 
               {item.status === "active" && (
                 <span className="relative flex h-2 w-2">
@@ -79,7 +85,14 @@ export function ExperienceRow({ item }: Props) {
             }}
             className="overflow-hidden pl-13 sm:pl-[52px] text-sm sm:text-base text-secondary-foreground tracking-wide lowercase"
           >
-            <div className="mt-2">{item.description}</div>
+            <ul className="mt-2 space-y-1">
+              {item.description.map((point, i) => (
+                <li key={i} className="flex gap-2">
+                  <span className="select-none">•</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
           </motion.div>
         )}
       </AnimatePresence>

@@ -28,7 +28,7 @@ export default function Page() {
           className={cn(
             "pointer-events-none absolute inset-y-0 -left-[100vw] -right-[100vw] -z-10",
             "bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)]",
-            "bg-[length:10px_10px] [--pattern-foreground:var(--color-edge)]/56",
+            "bg-[length:10px_10px] [--pattern-foreground:var(--color-edge)]/30",
           )}
         />
 

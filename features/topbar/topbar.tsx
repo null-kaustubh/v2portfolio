@@ -27,7 +27,7 @@ export default function TopBar() {
               className={cn(
                 "relative flex items-center",
                 "rounded-full border-[0.5px] border-border bg-muted",
-                "h-7.5 min-w-[260px] cursor-pointer"
+                "h-7.5 min-w-[260px] cursor-pointer",
               )}
             >
               {/* Sliding background */}
@@ -37,7 +37,7 @@ export default function TopBar() {
                   "absolute inset-y-0 left-0",
                   "w-1/2 rounded-full bg-selection",
                   "transition-transform duration-300 ease-out",
-                  isRecruiterMode ? "translate-x-full" : "translate-x-0"
+                  isRecruiterMode ? "translate-x-full" : "translate-x-0",
                 )}
               />
 
@@ -49,7 +49,7 @@ export default function TopBar() {
                     "rounded-full text-center whitespace-nowrap",
                     !isRecruiterMode
                       ? "text-selection-foreground"
-                      : "text-secondary-foreground"
+                      : "text-secondary-foreground",
                   )}
                   aria-pressed={!isRecruiterMode}
                 >
@@ -61,7 +61,7 @@ export default function TopBar() {
                     "rounded-full text-center whitespace-nowrap",
                     isRecruiterMode
                       ? "text-selection-foreground"
-                      : "text-secondary-foreground"
+                      : "text-secondary-foreground",
                   )}
                   aria-pressed={isRecruiterMode}
                 >

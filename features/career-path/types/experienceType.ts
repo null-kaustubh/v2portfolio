@@ -12,7 +12,7 @@ export interface ExperienceItem {
   status: JobStatus;
   from: YearMonth;
   to: YearMonth;
-  description: string;
+  description: string[];
 }
 
 export type ExperienceList = ExperienceItem[];
