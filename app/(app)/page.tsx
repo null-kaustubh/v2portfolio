@@ -1,13 +1,46 @@
-import Career from "@/features/career-path/components/career";
+import dynamic from "next/dynamic";
+
 import { Overview } from "@/features/overview/overview";
 import { ProfileHeader } from "@/features/profile/components/profile-header";
 import { USER } from "@/features/profile/data/user";
-import SocialLinks from "@/features/socials/SocialLinks";
-import { TechStack } from "@/features/techstack/components/techstack";
 import TopBar from "@/features/topbar/topbar";
 import { cn } from "@/lib/utils";
 import dayjs from "dayjs";
 import { ProfilePage as PageSchema, WithContext } from "schema-dts";
+import SectionSkeleton from "@/components/skeleton";
+
+const Career = dynamic(
+  () => import("@/features/career-path/components/career"),
+  {
+    loading: () => (
+      <ContentWrapper>
+        <SectionSkeleton />
+      </ContentWrapper>
+    ),
+  },
+);
+
+const TechStack = dynamic(
+  () =>
+    import("@/features/techstack/components/techstack").then(
+      (m) => m.TechStack,
+    ),
+  {
+    loading: () => (
+      <ContentWrapper>
+        <SectionSkeleton />
+      </ContentWrapper>
+    ),
+  },
+);
+
+const SocialLinks = dynamic(() => import("@/features/socials/SocialLinks"), {
+  loading: () => (
+    <ContentWrapper>
+      <SectionSkeleton />
+    </ContentWrapper>
+  ),
+});
 
 export default function Page() {
   return (

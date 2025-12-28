@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: "assets.kaustubh.cloud",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "wallpapercave.com",
+        pathname: "/**",
+      },
     ],
   },
 };

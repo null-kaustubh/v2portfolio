@@ -1,18 +1,22 @@
 import { USER } from "../data/user";
 import { cn } from "@/lib/utils";
 import { FlipSentences } from "@/src/registry/flip-sentences";
+import Image from "next/image";
 
 export function ProfileHeader() {
   return (
     <div className="screen-line-after flex">
       <div className="shrink-0 border-r border-edge">
         <div className="mx-[2px] my-[3px]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             className="size-32 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40 object-contain bg-white"
             alt={`${USER.displayName}'s avatar`}
             src={USER.avatar}
+            width={400}
+            height={400}
+            sizes="(max-width: 640px) 128px, 160px"
             fetchPriority="high"
+            priority
           />
         </div>
       </div>
