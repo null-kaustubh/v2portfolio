@@ -1,10 +1,14 @@
 "use client";
-import { cn } from "@/lib/utils";
+import { ThemeContext } from "@/context/ThemeProvider";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext } from "react";
 
 export default function TopBar() {
-  const [isRecruiterMode, setIsRecruiterMode] = useState(false);
+  const themeContext = useContext(ThemeContext);
+  if (!themeContext) return null;
+
+  const { theme, handleChange } = themeContext;
+  const isDark = theme === "dark";
 
   return (
     <header className="relative w-full bg-background">
@@ -20,56 +24,31 @@ export default function TopBar() {
             </span>
           </Link>
 
-          <nav className="flex items-center justify-center">
-            <button
-              type="button"
-              onClick={() => setIsRecruiterMode((p) => !p)}
-              className={cn(
-                "relative flex items-center",
-                "rounded-full border-[0.5px] border-border bg-muted",
-                "h-7.5 min-w-[260px] cursor-pointer",
-              )}
-            >
-              {/* Sliding background */}
-              <span
-                aria-hidden
-                className={cn(
-                  "absolute inset-y-0 left-0",
-                  "w-1/2 rounded-full bg-selection",
-                  "transition-transform duration-300 ease-out",
-                  isRecruiterMode ? "translate-x-full" : "translate-x-0",
-                )}
-              />
-
-              {/* Labels */}
-              <span className="relative z-10 flex items-center justify-center w-[280px]">
-                <span
-                  className={cn(
-                    "flex-1 py-2 px-4 text-xs transition-all duration-200",
-                    "rounded-full text-center whitespace-nowrap",
-                    !isRecruiterMode
-                      ? "text-selection-foreground"
-                      : "text-secondary-foreground",
-                  )}
-                  aria-pressed={!isRecruiterMode}
-                >
-                  Builder Mode
-                </span>
-                <span
-                  className={cn(
-                    "flex-1 py-2 px-4 text-xs transition-all duration-200",
-                    "rounded-full text-center whitespace-nowrap",
-                    isRecruiterMode
-                      ? "text-selection-foreground"
-                      : "text-secondary-foreground",
-                  )}
-                  aria-pressed={isRecruiterMode}
-                >
-                  Recruiter Mode
-                </span>
-              </span>
-            </button>
-          </nav>
+          <button
+            type="button"
+            onClick={handleChange}
+            className="p-1 transition-opacity hover:opacity-70 hover:cursor-pointer"
+            aria-label="Toggle theme"
+          >
+            {isDark ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="size-5 fill-secondary-foreground"
+                viewBox="0 0 24 24"
+              >
+                <path d="m21,11v-1h1v-1h1v-2h-3v-1h-2v-2h-1V1h-2v1h-1v1h-1v1h-2v-1h-1v-1h-1v-1h-2v3h-1v2h-2v1H1v2h1v1h1v1h1v2h-1v1h-1v1h-1v2h3v1h2v2h1v3h2v-1h1v-1h1v-1h2v1h1v1h1v1h2v-3h1v-2h2v-1h3v-2h-1v-1h-1v-1h-1v-2h1Zm-2,2v1h1v1h1v1h-3v1h-1v1h-1v3h-1v-1h-1v-1h-1v-1h-2v1h-1v1h-1v1h-1v-3h-1v-1h-1v-1h-3v-1h1v-1h1v-1h1v-2h-1v-1h-1v-1h-1v-1h3v-1h1v-1h1v-3h1v1h1v1h1v1h2v-1h1v-1h1v-1h1v2h1v2h1v1h3v1h-1v1h-1v1h-1v2h1Z"></path>
+                <path d="m16,10v-1h-1v-1h-1v-1h-4v1h-1v1h-1v1h-1v4h1v1h1v1h1v1h4v-1h1v-1h1v-1h1v-4h-1Zm-1,4h-1v1h-4v-1h-1v-4h1v-1h4v1h1v4Z"></path>
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="size-5 fill-secondary"
+                viewBox="0 0 24 24"
+              >
+                <path d="m21,17v1h-2v1h-4v-1h-2v-1h-2v-1h-1v-2h-1v-2h-1v-4h1v-2h1v-2h1v-1h2v-1h2v-1h-5v1h-2v1h-2v1h-1v1h-1v2h-1v2h-1v6h1v2h1v2h1v1h1v1h2v1h2v1h6v-1h2v-1h2v-1h1v-1h1v-2h-1Zm-13,3v-1h-2v-2h-1v-2h-1v-6h1v-2h1v-2h2v1h-1v2h-1v4h1v2h1v2h1v1h1v1h1v1h2v1h2v1h-5v-1h-2Z"></path>
+              </svg>
+            )}
+          </button>
         </div>
       </div>
     </header>

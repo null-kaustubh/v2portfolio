@@ -3,6 +3,9 @@ import "./globals.css";
 import { META_THEME_COLORS, SITE_INFO } from "@/config/site";
 import { USER } from "@/features/profile/data/user";
 import { departureMono, sfProDisplay } from "@/assets/fonts/fonts";
+import { cookies } from "next/headers";
+import clsx from "clsx";
+import ThemeProvider, { Theme } from "@/context/ThemeProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_INFO.url),
@@ -53,18 +56,31 @@ export const viewport: Viewport = {
   themeColor: META_THEME_COLORS.dark,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const savedTheme = (await cookies()).get("color-theme")?.value;
+  const theme: Theme =
+    savedTheme === "light" || savedTheme === "dark" ? savedTheme : "dark";
+
   return (
-    <html lang="en">
-      <body
-        className={`${departureMono.variable} ${sfProDisplay.variable} antialiased`}
-        suppressHydrationWarning
-      >
-        {children}
+    <html
+      lang="en"
+      className={clsx(
+        theme,
+        "overflow-x-hidden antialiased",
+        departureMono.variable,
+        sfProDisplay.variable,
+      )}
+      data-color-theme={theme}
+      style={{
+        scrollbarGutter: "stable",
+      }}
+    >
+      <body suppressHydrationWarning>
+        <ThemeProvider initialTheme={theme}>{children}</ThemeProvider>
       </body>
     </html>
   );

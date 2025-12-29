@@ -25,7 +25,7 @@ export function ProfileHeader() {
         <div
           className={cn(
             "flex grow items-end pb-1 pl-4",
-            "bg-white/0.75 bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-size-[10px_10px] bg-center [--pattern-foreground:var(--color-white)]/5",
+            "bg-white/0.75 bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-size-[10px_10px] bg-center [--pattern-foreground:var(--color-border)]/30",
           )}
         ></div>
 
