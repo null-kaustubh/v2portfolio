@@ -19,7 +19,7 @@ export default function SocialLinks() {
               rel="noopener noreferrer"
               className="
                 flex items-center justify-between gap-2 px-1.5 py-2
-                hover:underline underline-offset-4 hover:text-accent-foreground transition-colors duration-300
+                hover:underline underline-offset-4 hover:text-accent-foreground transition-colors duration-150
                 md:justify-center md:px-0
               "
             >

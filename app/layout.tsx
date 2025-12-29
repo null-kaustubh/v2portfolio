@@ -6,6 +6,7 @@ import { departureMono, sfProDisplay } from "@/assets/fonts/fonts";
 import { cookies } from "next/headers";
 import clsx from "clsx";
 import ThemeProvider, { Theme } from "@/context/ThemeProvider";
+import TopBar from "@/features/topbar/topbar";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_INFO.url),
@@ -80,7 +81,13 @@ export default async function RootLayout({
       }}
     >
       <body suppressHydrationWarning>
-        <ThemeProvider initialTheme={theme}>{children}</ThemeProvider>
+        <ThemeProvider initialTheme={theme}>
+          <TopBar />
+          {children}
+        </ThemeProvider>
+        <div className="pointer-events-none fixed bottom-0 left-0 right-0 px-4 sm:px-6 md:px-0 z-20">
+          <div className="mx-auto md:max-w-4xl lg:max-w-4xl h-[40px] blur-gradient-bottom" />
+        </div>
       </body>
     </html>
   );

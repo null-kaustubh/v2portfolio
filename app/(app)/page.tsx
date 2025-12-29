@@ -52,8 +52,6 @@ export default function Page() {
         }}
       />
 
-      <TopBar />
-
       <div className="relative">
         {/* Side pattern layer */}
         <div
@@ -65,7 +63,7 @@ export default function Page() {
           )}
         />
 
-        <div className="relative z-10 mx-auto md:max-w-4xl lg:max-w-4xl">
+        <div className="relative z-10 mx-auto px-4 sm:px-6 md:px-0 md:max-w-4xl lg:max-w-4xl">
           <ContentWrapper>
             <ProfileHeader />
           </ContentWrapper>

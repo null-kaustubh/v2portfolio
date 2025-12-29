@@ -6,7 +6,7 @@ export const USER: User = {
   displayName: "Kaustubh Sankhe",
   username: "nullkaustubh",
   gender: "male",
-  bio: "Building things that work.",
+  bio: "Software developer focused on building reliable, user-focused web experiences.",
   flipSentences: [
     "Building things that work.",
     "Software Developer",
