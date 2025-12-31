@@ -39,7 +39,7 @@ export function FlipSentences({
           startAnimation(); // Restart the interval when the tab becomes visible
         }
       },
-      { signal }
+      { signal },
     );
 
     return () => {
@@ -56,8 +56,8 @@ export function FlipSentences({
       <motion.p
         key={`current-sentence-${currentSentence}`}
         className={cn(
-          "font-mono text-sm text-balance text-secondary-foreground select-none",
-          className
+          "font-mono text-sm sm:text-md text-balance text-secondary-foreground select-none",
+          className,
         )}
         initial={{
           y: 8,

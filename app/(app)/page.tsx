@@ -3,11 +3,11 @@ import dynamic from "next/dynamic";
 import { Overview } from "@/features/overview/overview";
 import { ProfileHeader } from "@/features/profile/components/profile-header";
 import { USER } from "@/features/profile/data/user";
-import TopBar from "@/features/topbar/topbar";
 import { cn } from "@/lib/utils";
 import dayjs from "dayjs";
 import { ProfilePage as PageSchema, WithContext } from "schema-dts";
 import SectionSkeleton from "@/components/skeleton";
+import Hero from "@/features/hero/hero";
 
 const Career = dynamic(
   () => import("@/features/career-path/components/career"),
@@ -65,6 +65,7 @@ export default function Page() {
 
         <div className="relative z-10 mx-auto px-4 sm:px-6 md:px-0 md:max-w-4xl lg:max-w-4xl">
           <ContentWrapper>
+            <Hero />
             <ProfileHeader />
           </ContentWrapper>
 
