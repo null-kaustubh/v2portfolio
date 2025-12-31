@@ -19,7 +19,7 @@ export default function Hero() {
           absolute top-2 left-2
           sm:hidden
           text-[10px]
-          text-muted-foreground/30
+          text-secondary-foreground/30
           font-mono
           select-none
         "
@@ -53,7 +53,7 @@ export default function Hero() {
           }}
           className="text-center font-serif italic font-bold whitespace-nowrap
                        text-7xl sm:text-8xl md:text-9xl
-                       text-muted-foreground/25 hover:text-foreground transition-colors duration-300"
+                       text-secondary-foreground/25 hover:text-foreground transition-colors duration-300"
         >
           侘寂
         </motion.span>
@@ -84,13 +84,13 @@ export default function Hero() {
               <span className="text-2xl font-serif font-bold text-foreground">
                 侘寂
               </span>
-              <span className="font-mono text-sm italic text-muted-foreground">
+              <span className="font-mono text-sm italic text-secondary-foreground">
                 /wabi sabi/
               </span>
             </div>
 
             <div className="flex flex-col gap-1">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/70">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-secondary-foreground/70">
                 noun
               </span>
               <p className="text-sm font-medium leading-relaxed text-foreground/90">
