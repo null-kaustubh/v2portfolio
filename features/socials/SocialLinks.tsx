@@ -5,7 +5,7 @@ import { Panel } from "../panel";
 
 export default function SocialLinks() {
   return (
-    <Panel className="screen-line-before screen-line-after">
+    <Panel id="socials" className="screen-line-before screen-line-after">
       <div className="p-4 font-mono text-sm text-secondary-foreground">
         <div
           className="flex flex-col divide-y divide-edge md:grid md:divide-y-0 md:divide-x"
@@ -19,7 +19,7 @@ export default function SocialLinks() {
               rel="noopener noreferrer"
               className="
                 flex items-center justify-between gap-2 px-1.5 py-2
-                hover:underline underline-offset-4 hover:text-accent-foreground transition-colors duration-150
+                hover:underline underline-offset-4 hover:text-accent-foreground transition-[color] duration-200
                 md:justify-center md:px-0
               "
             >

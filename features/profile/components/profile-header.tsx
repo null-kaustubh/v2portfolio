@@ -22,7 +22,7 @@ export function ProfileHeader() {
       </div>
 
       <div className="flex flex-1 flex-col">
-        <div className={cn("flex grow items-end")}></div>
+        <div className={cn("grow items-end hidden sm:flex")}></div>
 
         <div className="border-t border-edge">
           <h1 className="flex items-center pl-4 text-4xl md:text-5xl font-medium">

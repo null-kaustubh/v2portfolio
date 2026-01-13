@@ -3,8 +3,8 @@ export type TechStack = {
   key: string;
   /** Display name of the technology. */
   title: string;
-  /** Official website URL. */
-  href: string;
   /** Category tags used for grouping/filtering. */
   categories: string[];
+  /** Themed true if icon has light and dark mode variants */
+  themed: boolean;
 };

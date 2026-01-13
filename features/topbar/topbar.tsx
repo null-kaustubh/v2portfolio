@@ -12,7 +12,7 @@ export default function TopBar() {
 
   return (
     <header className="sticky top-0 z-20 h-12 bg-background border-b border-edge flex justify-center">
-      <div className="relative mx-auto px-4 sm:px-6 md:px-0 md:max-w-4xl lg:max-w-4xl w-full">
+      <div className="relative mx-auto px-4 sm:px-6 lg:px-0 md:max-w-4xl lg:max-w-4xl w-full">
         <div className="relative h-full">
           {/* left diamond */}
           <div className="absolute left-0 -bottom-px -translate-x-[38%] translate-y-1/2 w-2 h-2 rotate-45 bg-background border border-edge z-20" />
