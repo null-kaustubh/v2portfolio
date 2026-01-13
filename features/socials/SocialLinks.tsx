@@ -7,8 +7,25 @@ export default function SocialLinks() {
   return (
     <Panel id="socials" className="screen-line-before screen-line-after">
       <div className="p-4 font-mono text-sm text-secondary-foreground">
+        {/* Mobile: icons only */}
+        <div className="flex items-center justify-evenly gap-4 md:hidden">
+          {links.map((link, id) => (
+            <Link
+              key={id}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent-foreground transition-colors"
+              aria-label={link.title}
+            >
+              {link.icon}
+            </Link>
+          ))}
+        </div>
+
+        {/* Desktop: title only */}
         <div
-          className="flex flex-col divide-y divide-edge md:grid md:divide-y-0 md:divide-x"
+          className="hidden md:grid md:divide-x divide-edge"
           style={{ gridTemplateColumns: `repeat(${links.length}, 1fr)` }}
         >
           {links.map((link, id) => (
