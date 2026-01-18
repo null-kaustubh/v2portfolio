@@ -10,7 +10,11 @@ export default function Projects() {
       <PanelContent>
         <div>
           <h2>Project 1</h2>
-          <p>Description of Project 1</p>
+          <p className="h-60">Description of Project 1</p>
+        </div>
+        <div>
+          <h2>Project 1</h2>
+          <p className="h-60">Description of Project 1</p>
         </div>
       </PanelContent>
     </Panel>

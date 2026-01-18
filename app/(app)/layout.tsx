@@ -7,7 +7,7 @@ const ScrollTop = dynamic(() =>
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <main className="max-w-screen overflow-x-hidden">{children}</main>
+      <main className="max-w-screen overflow-x-clip">{children}</main>
       <ScrollTop />
     </>
   );

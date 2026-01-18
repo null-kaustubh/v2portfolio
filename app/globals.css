@@ -310,6 +310,7 @@ body {
 
     html {
         @apply motion-safe:scroll-smooth;
+        scrollbar-gutter: stable;
     }
 
     body {
