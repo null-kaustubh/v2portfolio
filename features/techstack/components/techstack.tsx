@@ -86,6 +86,13 @@ export function TechStack() {
           "[--pattern-foreground:var(--color-border)]/30",
         )}
       >
+        {sorted ? (
+          <div className="font-mono text-xs text-secondary-foreground/20 absolute top-10 right-3 select-none">
+            hover around
+          </div>
+        ) : (
+          ""
+        )}
         <LayoutGroup>
           <motion.div
             initial={false}

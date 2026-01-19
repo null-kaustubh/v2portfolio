@@ -24,31 +24,46 @@ export default function TopBar() {
               </span>
             </Link>
 
-            <button
-              type="button"
-              onClick={handleChange}
-              className="p-1 transition-opacity hover:opacity-70 hover:cursor-pointer"
-              aria-label="Toggle theme"
-            >
-              {isDark ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-5 fill-secondary-foreground"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="m21,11v-1h1v-1h1v-2h-3v-1h-2v-2h-1V1h-2v1h-1v1h-1v1h-2v-1h-1v-1h-1v-1h-2v3h-1v2h-2v1H1v2h1v1h1v1h1v2h-1v1h-1v1h-1v2h3v1h2v2h1v3h2v-1h1v-1h1v-1h2v1h1v1h1v1h2v-3h1v-2h2v-1h3v-2h-1v-1h-1v-1h-1v-2h1Zm-2,2v1h1v1h1v1h-3v1h-1v1h-1v3h-1v-1h-1v-1h-1v-1h-2v1h-1v1h-1v1h-1v-3h-1v-1h-1v-1h-3v-1h1v-1h1v-1h1v-2h-1v-1h-1v-1h-1v-1h3v-1h1v-1h1v-3h1v1h1v1h1v1h2v-1h1v-1h1v-1h1v2h1v2h1v1h3v1h-1v1h-1v1h-1v2h1Z"></path>
-                  <path d="m16,10v-1h-1v-1h-1v-1h-4v1h-1v1h-1v1h-1v4h1v1h1v1h1v1h4v-1h1v-1h1v-1h1v-4h-1Zm-1,4h-1v1h-4v-1h-1v-4h1v-1h4v1h1v4Z"></path>
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-5 fill-secondary"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="m21,17v1h-2v1h-4v-1h-2v-1h-2v-1h-1v-2h-1v-2h-1v-4h1v-2h1v-2h1v-1h2v-1h2v-1h-5v1h-2v1h-2v1h-1v1h-1v2h-1v2h-1v6h1v2h1v2h1v1h1v1h2v1h2v1h6v-1h2v-1h2v-1h1v-1h1v-2h-1Zm-13,3v-1h-2v-2h-1v-2h-1v-6h1v-2h1v-2h2v1h-1v2h-1v4h1v2h1v2h1v1h1v1h1v1h2v1h2v1h-5v-1h-2Z"></path>
-                </svg>
-              )}
-            </button>
+            <div className="flex items-center justify-center gap-7">
+              <Link
+                href="/projects"
+                className="transition-opacity hover:opacity-70 cursor-pointer"
+              >
+                Projects
+              </Link>
+
+              <Link
+                href="/blogs"
+                className="transition-opacity hover:opacity-70 cursor-pointer"
+              >
+                Blog
+              </Link>
+              <button
+                type="button"
+                onClick={handleChange}
+                className="p-1 transition-opacity hover:opacity-70 hover:cursor-pointer"
+                aria-label="Toggle theme"
+              >
+                {isDark ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="size-5 fill-secondary-foreground"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="m21,11v-1h1v-1h1v-2h-3v-1h-2v-2h-1V1h-2v1h-1v1h-1v1h-2v-1h-1v-1h-1v-1h-2v3h-1v2h-2v1H1v2h1v1h1v1h1v2h-1v1h-1v1h-1v2h3v1h2v2h1v3h2v-1h1v-1h1v-1h2v1h1v1h1v1h2v-3h1v-2h2v-1h3v-2h-1v-1h-1v-1h-1v-2h1Zm-2,2v1h1v1h1v1h-3v1h-1v1h-1v3h-1v-1h-1v-1h-1v-1h-2v1h-1v1h-1v1h-1v-3h-1v-1h-1v-1h-3v-1h1v-1h1v-1h1v-2h-1v-1h-1v-1h-1v-1h3v-1h1v-1h1v-3h1v1h1v1h1v1h2v-1h1v-1h1v-1h1v2h1v2h1v1h3v1h-1v1h-1v1h-1v2h1Z"></path>
+                    <path d="m16,10v-1h-1v-1h-1v-1h-4v1h-1v1h-1v1h-1v4h1v1h1v1h1v1h4v-1h1v-1h1v-1h1v-4h-1Zm-1,4h-1v1h-4v-1h-1v-4h1v-1h4v1h1v4Z"></path>
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="size-5 fill-secondary"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="m21,17v1h-2v1h-4v-1h-2v-1h-2v-1h-1v-2h-1v-2h-1v-4h1v-2h1v-2h1v-1h2v-1h2v-1h-5v1h-2v1h-2v1h-1v1h-1v2h-1v2h-1v6h1v2h1v2h1v1h1v1h2v1h2v1h6v-1h2v-1h2v-1h1v-1h1v-2h-1Zm-13,3v-1h-2v-2h-1v-2h-1v-6h1v-2h1v-2h2v1h-1v2h-1v4h1v2h1v2h1v1h1v1h1v1h2v1h2v1h-5v-1h-2Z"></path>
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
           {/* right diamond */}
           <div className="absolute right-0 -bottom-px translate-x-[38%] translate-y-1/2 w-2 h-2 rotate-45 bg-background border border-edge z-20" />
