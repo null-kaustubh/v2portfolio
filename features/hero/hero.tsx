@@ -51,9 +51,13 @@ export default function Hero() {
             stiffness: 260,
             damping: 20,
           }}
-          className="text-center font-serif italic font-bold whitespace-nowrap
-                       text-7xl sm:text-8xl md:text-9xl
-                       text-secondary-foreground/25 hover:text-foreground transition-colors duration-300"
+          className={cn(
+            "text-center font-serif italic font-bold whitespace-nowrap",
+            "text-7xl sm:text-8xl md:text-9xl",
+            "text-secondary-foreground/25 transition-colors duration-300",
+            "hover:text-foreground",
+            open && "text-foreground",
+          )}
         >
           侘寂
         </motion.span>

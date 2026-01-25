@@ -13,16 +13,17 @@ type ProjectItemProps = {
 };
 
 const statusStyles = {
-  live: "text-green-500",
-  "in development": "text-yellow-500",
-  "on hiatus": "text-muted-foreground",
+  live: "bg-green-500/10 text-green-600 border-green-500/40",
+  "in development": "bg-yellow-500/10 text-yellow-600 border-yellow-500/20",
+  "on hiatus":
+    "bg-secondary-foreground/10 text-secondary-foreground border-border",
 };
 
 export default function ProjectItem({ project }: ProjectItemProps) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="group flex flex-col hover:cursor-pointer odd:border-r border-border not-last:border-b"
+      className="group flex flex-col hover:cursor-pointer border-border"
     >
       {/* Image */}
       <div className="bg-border w-full aspect-[1.4/1] border-b border-border overflow-hidden transition-all grayscale-75 group-hover:grayscale-0 duration-500">
@@ -52,7 +53,9 @@ export default function ProjectItem({ project }: ProjectItemProps) {
           </h3>
 
           <span
-            className={`text-xs font-mono uppercase ${statusStyles[project.status]}`}
+            className={`
+                text-xs font-mono uppercase
+                border px-1 py-1 rounded-sm ${statusStyles[project.status]}`}
           >
             {project.status}
           </span>

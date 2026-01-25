@@ -10,6 +10,7 @@ export type Project = {
   status: ProjectStatus;
   tech: string[];
   slug: string;
+  date?: string;
 };
 
 export const projects: Project[] = [
@@ -17,7 +18,7 @@ export const projects: Project[] = [
     title: "Journl",
     description: "A journaling app for developers to document learning.",
     image: "https://assets.kaustubh.cloud/images/og-image.png",
-    blurhash: "U35#bB~qxuD%_3?bxuIo9FIUoexu004nM{%M",
+    blurhash: "L35#bB~qxuD%_3?bxuIo9FIUoexu",
     status: "in development",
     tech: ["Next.js", "PostgreSQL", "Prisma", "NextAuth"],
     slug: slugify("Journl"),
@@ -48,5 +49,23 @@ export const projects: Project[] = [
     status: "live",
     tech: ["Next.js", "Tailwind", "Canvas"],
     slug: slugify("Newer"),
+  },
+  {
+    title: "Newest",
+    description: "Turn code snippets into beautiful images.",
+    image: "https://assets.kaustubh.cloud/images/og-image.png",
+    blurhash: "U35#bB~qxuD%_3?bxuIo9FIUoexu004nM{%M",
+    status: "live",
+    tech: ["Next.js", "Tailwind", "Node.js", "PostgreSQL"],
+    slug: slugify("Newest"),
+  },
+  {
+    title: "Recall",
+    description: "Turn code snippets into beautiful images.",
+    image: "https://assets.kaustubh.cloud/images/og-image.png",
+    blurhash: "U35#bB~qxuD%_3?bxuIo9FIUoexu004nM{%M",
+    status: "live",
+    tech: ["Next.js", "Tailwind", "MongoDb"],
+    slug: slugify("Recall"),
   },
 ];

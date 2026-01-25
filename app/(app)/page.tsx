@@ -132,7 +132,7 @@ function getPageJsonLd(): WithContext<PageSchema> {
 //   );
 // }
 
-function ContentWrapper({
+export function ContentWrapper({
   children,
   className,
 }: {
