@@ -2,9 +2,11 @@
 import { ThemeContext } from "@/context/ThemeProvider";
 import Link from "next/link";
 import { useContext } from "react";
+import { usePathname } from "next/navigation";
 
 export default function TopBar() {
   const themeContext = useContext(ThemeContext);
+  const pathname = usePathname();
   if (!themeContext) return null;
 
   const { theme, handleChange } = themeContext;
@@ -27,14 +29,22 @@ export default function TopBar() {
             <div className="flex items-center justify-center gap-7">
               <Link
                 href="/projects"
-                className="transition-opacity hover:opacity-70 cursor-pointer"
+                className={`transition-opacity hover:opacity-70 cursor-pointer ${
+                  pathname.startsWith("/projects")
+                    ? "text-foreground"
+                    : "text-secondary-foreground"
+                }`}
               >
                 Projects
               </Link>
 
               <Link
                 href="/blogs"
-                className="transition-opacity hover:opacity-70 cursor-pointer"
+                className={`transition-opacity hover:opacity-70 cursor-pointer ${
+                  pathname.startsWith("/blogs")
+                    ? "text-foreground"
+                    : "text-secondary-foreground"
+                }`}
               >
                 Blog
               </Link>

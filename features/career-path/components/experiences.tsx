@@ -28,6 +28,7 @@ export function ExperienceRow({ item }: Props) {
             width={40}
             height={40}
             className="object-cover select-none"
+            draggable={false}
           />
         </div>
 

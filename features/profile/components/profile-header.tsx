@@ -2,6 +2,7 @@ import { USER } from "../data/user";
 import { cn } from "@/lib/utils";
 import { FlipSentences } from "@/src/registry/flip-sentences";
 import Image from "next/image";
+import LetterField from "./letterfield";
 
 export function ProfileHeader() {
   return (
@@ -17,12 +18,19 @@ export function ProfileHeader() {
             sizes="(max-width: 640px) 128px, 160px"
             fetchPriority="high"
             priority
+            draggable={false}
           />
         </div>
       </div>
 
       <div className="flex flex-1 flex-col">
-        <div className={cn("grow items-end hidden sm:flex")}></div>
+        <div
+          className={cn(
+            "grow hidden sm:flex relative h-full overflow-hidden select-none cursor-none",
+          )}
+        >
+          <LetterField seed={Date.now()} />
+        </div>
 
         <div className="border-t border-edge">
           <h1 className="flex items-center pl-4 text-4xl md:text-5xl font-medium">

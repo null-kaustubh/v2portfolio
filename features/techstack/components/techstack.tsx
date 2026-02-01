@@ -87,7 +87,7 @@ export function TechStack() {
         )}
       >
         {sorted ? (
-          <div className="font-mono text-xs text-secondary-foreground/20 absolute top-10 right-3 select-none">
+          <div className="font-mono text-xs text-secondary-foreground/20 absolute top-10 right-3 select-none hidden md:block">
             hover around
           </div>
         ) : (
@@ -171,6 +171,7 @@ export function TechStack() {
                                     "object-contain",
                                     tech.themed && "dark-icon-hidden",
                                   )}
+                                  draggable={false}
                                 />
 
                                 {/* Dark-mode icon (only if it exists) */}
@@ -181,6 +182,7 @@ export function TechStack() {
                                     fill
                                     unoptimized
                                     className="object-contain dark-icon-visible"
+                                    draggable={false}
                                   />
                                 )}
 
@@ -227,6 +229,7 @@ export function TechStack() {
                                   "object-contain",
                                   tech.themed && "dark-icon-hidden",
                                 )}
+                                draggable={false}
                               />
 
                               {/* Dark-mode icon (only if it exists) */}
@@ -237,6 +240,7 @@ export function TechStack() {
                                   fill
                                   unoptimized
                                   className="object-contain dark-icon-visible"
+                                  draggable={false}
                                 />
                               )}
 

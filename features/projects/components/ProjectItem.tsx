@@ -35,6 +35,7 @@ export default function ProjectItem({ project }: ProjectItemProps) {
           placeholder="blur"
           blurDataURL={project.blurDataURL}
           className="object-cover filter: blur(20px); transition: filter 0.5s ease-out;"
+          draggable={false}
         />
       </div>
 
