@@ -9,15 +9,17 @@ import { Project, projects } from "@/features/projects/data/projects";
 import { Metadata } from "next";
 
 type PageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const project = projects.find((p) => p.slug === params.slug);
+  const { slug } = await params;
+
+  const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
     return {};
@@ -48,8 +50,9 @@ export async function generateMetadata({
   };
 }
 
-export default function ProjectPage({ params }: PageProps) {
-  const project = projects.find((p) => p.slug === params.slug);
+export default async function ProjectPage({ params }: PageProps) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
     notFound();

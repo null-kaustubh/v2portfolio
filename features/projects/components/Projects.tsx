@@ -23,7 +23,7 @@ export default function Projects() {
       </PanelHeader>
 
       <PanelContent className="p-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-border">
+        <div className="grid grid-cols-1 md:grid-cols-2">
           {previewProjects.map((project) => (
             <div
               key={project.slug}

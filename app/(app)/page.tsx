@@ -53,6 +53,14 @@ const Projects = dynamic(
   },
 );
 
+const Footer = dynamic(() => import("@/features/footer/components/footer"), {
+  loading: () => (
+    <ContentWrapper>
+      <SectionSkeleton />
+    </ContentWrapper>
+  ),
+});
+
 export default function Page() {
   return (
     <>
@@ -98,6 +106,10 @@ export default function Page() {
 
           <ContentWrapper>
             <Projects />
+          </ContentWrapper>
+
+          <ContentWrapper>
+            <Footer />
           </ContentWrapper>
         </div>
       </div>
