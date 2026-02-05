@@ -10,6 +10,15 @@ export default function Views() {
       .then((data) => setViews(data.views));
   }, []);
 
-  if (!views) return null;
-  return <span>{views.toLocaleString()} visitors</span>;
+  if (views === null)
+    return (
+      <div className="font-mono text-xs">
+        visitors <span className="text-selection">#0</span>
+      </div>
+    );
+  return (
+    <div className="font-mono text-xs">
+      visitors <span className="text-selection">#{views.toLocaleString()}</span>
+    </div>
+  );
 }

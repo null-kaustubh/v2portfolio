@@ -86,7 +86,7 @@ export default async function RootLayout({
           {children}
         </ThemeProvider>
         <div className="pointer-events-none fixed bottom-0 left-0 right-0 px-4 sm:px-6 md:px-0 z-20">
-          <div className="mx-auto md:max-w-4xl lg:max-w-4xl h-[40px] blur-gradient-bottom" />
+          <div className="mx-auto md:max-w-4xl lg:max-w-4xl h-10 blur-gradient-bottom" />
         </div>
       </body>
     </html>
