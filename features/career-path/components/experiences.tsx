@@ -1,24 +1,26 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
 import type { ExperienceItem } from "../types/experienceType";
 import { formatDateRange } from "@/lib/formatDate";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronRight } from "lucide-react";
 import { useMediaQuery } from "@/hooks/use-media-query";
 
 type Props = {
   item: ExperienceItem;
+  isOpen: boolean;
+  onHoverAction: () => void;
 };
 
-export function ExperienceRow({ item }: Props) {
-  const [open, setOpen] = useState(false);
+export function ExperienceRow({ item, isOpen, onHoverAction }: Props) {
   const isMobile = useMediaQuery("(max-width: 640px)");
 
   return (
-    <div
-      className="group cursor-pointer py-3"
-      onClick={() => setOpen((p) => !p)}
+    <motion.div
+      layout
+      onMouseEnter={!isMobile ? onHoverAction : undefined}
+      className={`group py-3 rounded-xl px-4 my-1.5 bg-muted/50`}
+      onClick={isMobile ? () => onHoverAction() : undefined}
+      transition={{ layout: { duration: 0.35, ease: [0.4, 0, 0.2, 1] } }}
     >
       <div className="flex w-full items-start gap-3">
         <div className="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-muted">
@@ -38,17 +40,6 @@ export function ExperienceRow({ item }: Props) {
               <p className="font-medium text-md sm:text-lg leading-none lowercase">
                 {item.company}
               </p>
-
-              <ChevronRight
-                className={`
-                  h-4 w-4
-                  text-secondary-foreground
-                  opacity-0
-                  transition-all duration-200 ease-out
-                  group-hover:opacity-100
-                  ${open ? "rotate-90" : "rotate-0"}
-                `}
-              />
             </div>
 
             <div className="ml-auto flex items-center gap-2 whitespace-nowrap text-[11px] sm:text-xs font-mono text-secondary-foreground">
@@ -75,8 +66,9 @@ export function ExperienceRow({ item }: Props) {
       </div>
 
       <AnimatePresence initial={false}>
-        {open && (
+        {isOpen && (
           <motion.div
+            layout
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -84,7 +76,7 @@ export function ExperienceRow({ item }: Props) {
               duration: 0.35,
               ease: [0.4, 0, 0.2, 1],
             }}
-            className="overflow-hidden pl-13 sm:pl-[52px] text-sm sm:text-base text-secondary-foreground tracking-wide lowercase"
+            className="overflow-hidden pl-13 sm:pl-13 text-sm sm:text-base text-secondary-foreground tracking-wide lowercase"
           >
             <ul className="mt-2 space-y-1">
               {item.description.map((point, i) => (
@@ -97,6 +89,6 @@ export function ExperienceRow({ item }: Props) {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }

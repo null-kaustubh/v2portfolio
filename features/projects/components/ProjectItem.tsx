@@ -50,7 +50,7 @@ export default function ProjectItem({ project }: ProjectItemProps) {
         <div className="flex items-center gap-3 mt-2">
           <h3 className="text-2xl relative w-fit">
             {project.title}
-            <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-foreground transition-all duration-300 group-hover:w-full" />
+            <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full" />
           </h3>
 
           <span

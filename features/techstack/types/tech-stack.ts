@@ -1,3 +1,5 @@
+import { TECH_STACK } from "../data/tech-stack";
+
 export type TechGroup =
   | "frontend"
   | "backend"
@@ -20,3 +22,9 @@ export interface TechStackType {
   /** Grouping of the technology */
   group: TechGroup;
 }
+
+export type TechStackProps = {
+  sorted: boolean;
+  skills: typeof TECH_STACK;
+  groupedSkills: [TechGroup, typeof TECH_STACK][] | null;
+};

@@ -20,11 +20,8 @@ const Career = dynamic(
   },
 );
 
-const TechStack = dynamic(
-  () =>
-    import("@/features/techstack/components/techstack").then(
-      (m) => m.TechStack,
-    ),
+const Skills = dynamic(
+  () => import("@/features/techstack/components/skills").then((m) => m.Skills),
   {
     loading: () => (
       <ContentWrapper>
@@ -42,6 +39,17 @@ const SocialLinks = dynamic(() => import("@/features/socials/SocialLinks"), {
   ),
 });
 
+const OpenSource = dynamic(
+  () => import("@/features/open-source/components/opensource"),
+  {
+    loading: () => (
+      <ContentWrapper>
+        <SectionSkeleton />
+      </ContentWrapper>
+    ),
+  },
+);
+
 const Projects = dynamic(
   () => import("@/features/projects/components/Projects"),
   {
@@ -52,6 +60,14 @@ const Projects = dynamic(
     ),
   },
 );
+
+const Blogs = dynamic(() => import("@/features/blogs/components/blog"), {
+  loading: () => (
+    <ContentWrapper>
+      <SectionSkeleton />
+    </ContentWrapper>
+  ),
+});
 
 const Footer = dynamic(() => import("@/features/footer/components/footer"), {
   loading: () => (
@@ -78,7 +94,7 @@ export default function Page() {
           className={cn(
             "pointer-events-none absolute inset-y-0 -left-[100vw] -right-[100vw] -z-10",
             "bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)]",
-            "bg-[length:10px_10px] [--pattern-foreground:var(--color-edge)]/30",
+            "bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/30",
           )}
         />
 
@@ -101,11 +117,19 @@ export default function Page() {
           </ContentWrapper>
 
           <ContentWrapper>
-            <TechStack />
+            <Skills />
+          </ContentWrapper>
+
+          <ContentWrapper>
+            <OpenSource />
           </ContentWrapper>
 
           <ContentWrapper>
             <Projects />
+          </ContentWrapper>
+
+          <ContentWrapper>
+            <Blogs />
           </ContentWrapper>
 
           <ContentWrapper>

@@ -8,7 +8,7 @@ export function ProfileHeader() {
   return (
     <div className="screen-line-after screen-line-before flex">
       <div className="shrink-0 border-r border-edge">
-        <div className="mx-[2px] my-[3px]">
+        <div className="mx-0.5 my-0.75">
           <Image
             className="size-32 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-44 object-contain bg-white"
             alt={`${USER.displayName}'s avatar`}

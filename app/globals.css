@@ -20,10 +20,10 @@
     --secondary-foreground: oklch(55.3% 0.013 58.071);
 
     /* zinc-800 */
-    --muted: lab(96.1634% 0.0993311 -0.364041);
+    --muted: oklch(93% 0.008 95);
 
     /* zinc-400 */
-    --muted-foreground: oklch(55.3% 0.013 58.071);
+    --muted-foreground: oklch(45% 0.01 60);
 
     /* zinc-800 */
     --border: oklch(86.9% 0.005 56.366);
