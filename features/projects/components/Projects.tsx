@@ -5,7 +5,7 @@ import { projects } from "../data/projects";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-const PREVIEW_COUNT = 4;
+const PREVIEW_COUNT = 2;
 
 export default function Projects() {
   const projectsWithBlur = projects.map((project) => ({
