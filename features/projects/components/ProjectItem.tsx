@@ -26,7 +26,7 @@ export default function ProjectItem({ project }: ProjectItemProps) {
       className="group flex flex-col hover:cursor-pointer border-border"
     >
       {/* Image */}
-      <div className="bg-border w-full aspect-[1.4/1] border-b border-border overflow-hidden transition-all grayscale-75 group-hover:grayscale-0 duration-500">
+      <div className="bg-border w-full aspect-[1.4/1] border-b border-border overflow-hidden transition-[color] grayscale-75 group-hover:grayscale-0 duration-500">
         <Image
           src={project.image}
           alt={project.title}

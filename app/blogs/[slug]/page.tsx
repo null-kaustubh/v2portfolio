@@ -1,13 +1,12 @@
 import { CreativeWork, WithContext } from "schema-dts";
 import { ContentWrapper } from "../../(app)/page";
-import dayjs from "dayjs";
 import { USER } from "@/features/profile/data/user";
 import { cn } from "@/lib/utils";
 import { SITE_INFO } from "@/config/site";
 import { notFound } from "next/navigation";
-import { projects } from "@/features/projects/data/projects";
+import { blogs } from "@/features/blogs/data/blogData";
 import { Metadata } from "next";
-import { Project } from "@/features/projects/types/projectTypes";
+import { BlogItemType } from "@/features/blogs/types/blogType";
 
 type PageProps = {
   params: Promise<{
@@ -20,46 +19,46 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
 
-  const project = projects.find((p) => p.slug === slug);
+  const blog = blogs.find((p) => p.slug === slug);
 
-  if (!project) {
+  if (!blog) {
     return {};
   }
 
   return {
-    title: project.title,
-    description: project.description,
+    title: blog.title,
+    description: blog.description,
     openGraph: {
-      title: project.title,
-      description: project.description,
-      url: `/projects/${project.slug}`,
+      title: blog.title,
+      description: blog.description,
+      url: `/blogs/${blog.slug}`,
       images: [
         {
-          url: project.image,
+          url: blog.image,
           width: 1200,
           height: 630,
-          alt: project.title,
+          alt: blog.title,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: project.title,
-      description: project.description,
-      images: [project.image],
+      title: blog.title,
+      description: blog.description,
+      images: [blog.image],
     },
   };
 }
 
-export default async function ProjectPage({ params }: PageProps) {
+export default async function BlogPage({ params }: PageProps) {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+  const blog = blogs.find((p) => p.slug === slug);
 
-  if (!project) {
+  if (!blog) {
     notFound();
   }
 
-  const jsonLd = getProjectPageJsonLd(project);
+  const jsonLd = getBlogPageJsonLd(blog);
 
   return (
     <>
@@ -91,17 +90,19 @@ export default async function ProjectPage({ params }: PageProps) {
   );
 }
 
-function getProjectPageJsonLd(project: Project): WithContext<CreativeWork> {
+function getBlogPageJsonLd(blog: BlogItemType): WithContext<CreativeWork> {
   return {
     "@context": "https://schema.org",
-    "@type": "CreativeWork",
+    "@type": "BlogPosting",
 
-    name: project.title,
-    description: project.description,
-    url: `${SITE_INFO.url}/projects/${project.slug}`,
+    name: blog.title,
+    description: blog.description,
+    url: `${SITE_INFO.url}/blogs/${blog.slug}`,
 
-    dateCreated: project.date ? dayjs(project.date).toISOString() : undefined,
-    dateModified: dayjs().toISOString(),
+    datePublished: blog.date,
+    dateModified: blog.date,
+
+    inLanguage: "en",
 
     author: {
       "@type": "Person",
@@ -110,17 +111,15 @@ function getProjectPageJsonLd(project: Project): WithContext<CreativeWork> {
       image: USER.avatar,
     },
 
-    creator: {
+    publisher: {
       "@type": "Person",
       name: USER.displayName,
     },
 
-    keywords: project.tech?.join(", "),
-
-    image: project.image
+    image: blog.image
       ? {
           "@type": "ImageObject",
-          url: project.image,
+          url: blog.image,
         }
       : undefined,
   };

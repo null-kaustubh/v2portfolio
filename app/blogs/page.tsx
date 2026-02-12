@@ -4,24 +4,21 @@ import dayjs from "dayjs";
 import { USER } from "@/features/profile/data/user";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
-import { projects } from "@/features/projects/data/projects";
+import { blogs } from "@/features/blogs/data/blogData";
 import { SITE_INFO } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Projects",
-  description: "A collection of projects built by " + USER.displayName,
+  title: "Blogs",
+  description: "A collection of thoughts written by " + USER.displayName,
 };
 
-export default function ProjectsPage() {
+export default function BlogsPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(getProjectsPageJsonLd()).replace(
-            /</g,
-            "\\u003c",
-          ),
+          __html: JSON.stringify(getBlogsPageJsonLd()).replace(/</g, "\\u003c"),
         }}
       />
 
@@ -38,7 +35,7 @@ export default function ProjectsPage() {
 
         <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-0 md:max-w-4xl lg:max-w-4xl">
           <ContentWrapper>
-            <div>Hello</div>
+            <div>Hello blogs</div>
           </ContentWrapper>
         </div>
       </div>
@@ -46,20 +43,21 @@ export default function ProjectsPage() {
   );
 }
 
-function getProjectsPageJsonLd(): WithContext<CollectionPage> {
+function getBlogsPageJsonLd(): WithContext<CollectionPage> {
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Projects",
-    description: "A collection of projects built by " + USER.displayName,
+    name: "Blogs",
+    description: "A collection of thoughts written by " + USER.displayName,
     dateModified: dayjs().toISOString(),
+    inLanguage: "en",
     mainEntity: {
       "@type": "ItemList",
-      itemListElement: projects.map((project, index) => ({
+      itemListElement: blogs.map((blog, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        name: project.title,
-        url: `${SITE_INFO.url}/projects/${project.slug}`,
+        name: blog.title,
+        url: `${SITE_INFO.url}/blogs/${blog.slug}`,
       })),
     },
     about: {
@@ -67,6 +65,10 @@ function getProjectsPageJsonLd(): WithContext<CollectionPage> {
       name: USER.displayName,
       identifier: USER.username,
       image: USER.avatar,
+    },
+    publisher: {
+      "@type": "Person",
+      name: USER.displayName,
     },
   };
 }
