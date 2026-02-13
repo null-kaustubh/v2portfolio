@@ -34,7 +34,7 @@ export default function Projects() {
           ))}
         </div>
         {hasMore && (
-          <PanelContent className="flex items-center justify-center">
+          <div className="p-4 flex items-center justify-center">
             <Link
               href="/projects"
               className="
@@ -49,7 +49,7 @@ export default function Projects() {
                 className="transition-transform group-hover:translate-x-0.5"
               />
             </Link>
-          </PanelContent>
+          </div>
         )}
       </PanelContent>
     </Panel>

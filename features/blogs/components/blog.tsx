@@ -20,7 +20,7 @@ export default function Blog() {
         </div>
 
         {blogs.length > 3 && (
-          <PanelContent className="flex items-center justify-center">
+          <div className="p-4 flex items-center justify-center">
             <Link
               href="/blogs"
               className="
@@ -35,7 +35,7 @@ export default function Blog() {
                 className="transition-transform group-hover:translate-x-0.5"
               />
             </Link>
-          </PanelContent>
+          </div>
         )}
       </PanelContent>
     </Panel>

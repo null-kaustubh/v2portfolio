@@ -6,7 +6,8 @@ export type SocialLinkType =
   | "twitter"
   | "leetcode"
   | "email"
-  | "website";
+  | "website"
+  | "pinterest";
 
 export type Links = {
   title: string;
