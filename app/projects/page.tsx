@@ -1,10 +1,10 @@
 import { CollectionPage, WithContext } from "schema-dts";
 import { ContentWrapper } from "../(app)/page";
 import dayjs from "dayjs";
-import { USER } from "@/features/profile/data/user";
+import { USER } from "@/features/portfolio/profile/data/user";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
-import { projects } from "@/features/projects/data/projects";
+import { projects } from "@/features/portfolio/projects/data/projects";
 import { SITE_INFO } from "@/config/site";
 
 export const metadata: Metadata = {

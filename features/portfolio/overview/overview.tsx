@@ -1,9 +1,9 @@
 import { GlobeIcon, MapPinIcon } from "lucide-react";
 
-import { USER } from "@/features/profile/data/user";
+import { USER } from "@/features/portfolio/profile/data/user";
 import { urlToName } from "@/utils/url";
 
-import { Panel, PanelContent } from "../panel";
+import { Panel, PanelContent } from "../../panel";
 import { CurrentLocalTimeItem } from "./current-local-time-item";
 import { EmailItem } from "./email-item";
 import {

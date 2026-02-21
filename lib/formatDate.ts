@@ -1,4 +1,4 @@
-import { YearMonth } from "@/features/career-path/types/experienceType";
+import { YearMonth } from "@/features/portfolio/career-path/types/experienceType";
 
 export function formatYearMonth(
   value: string | null,

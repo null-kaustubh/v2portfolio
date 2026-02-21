@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { links } from "./links";
-import { Panel } from "../panel";
+import { Panel } from "../../panel";
 
 export default function SocialLinks() {
   return (

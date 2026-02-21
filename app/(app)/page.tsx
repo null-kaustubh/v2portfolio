@@ -1,16 +1,16 @@
 import dynamic from "next/dynamic";
 
-import { Overview } from "@/features/overview/overview";
-import { ProfileHeader } from "@/features/profile/components/profile-header";
-import { USER } from "@/features/profile/data/user";
+import { Overview } from "@/features/portfolio/overview/overview";
+import { ProfileHeader } from "@/features/portfolio/profile/components/profile-header";
+import { USER } from "@/features/portfolio/profile/data/user";
 import { cn } from "@/lib/utils";
 import dayjs from "dayjs";
 import { ProfilePage as PageSchema, WithContext } from "schema-dts";
 import SectionSkeleton from "@/components/skeleton";
-import Hero from "@/features/hero/hero";
+import Hero from "@/features/portfolio/hero/hero";
 
 const Career = dynamic(
-  () => import("@/features/career-path/components/career"),
+  () => import("@/features/portfolio/career-path/components/career"),
   {
     loading: () => (
       <ContentWrapper>
@@ -21,7 +21,10 @@ const Career = dynamic(
 );
 
 const Skills = dynamic(
-  () => import("@/features/techstack/components/skills").then((m) => m.Skills),
+  () =>
+    import("@/features/portfolio/techstack/components/skills").then(
+      (m) => m.Skills,
+    ),
   {
     loading: () => (
       <ContentWrapper>
@@ -31,16 +34,19 @@ const Skills = dynamic(
   },
 );
 
-const SocialLinks = dynamic(() => import("@/features/socials/SocialLinks"), {
-  loading: () => (
-    <ContentWrapper>
-      <SectionSkeleton />
-    </ContentWrapper>
-  ),
-});
+const SocialLinks = dynamic(
+  () => import("@/features/portfolio/socials/SocialLinks"),
+  {
+    loading: () => (
+      <ContentWrapper>
+        <SectionSkeleton />
+      </ContentWrapper>
+    ),
+  },
+);
 
 const OpenSource = dynamic(
-  () => import("@/features/open-source/components/opensource"),
+  () => import("@/features/portfolio/open-source/components/opensource"),
   {
     loading: () => (
       <ContentWrapper>
@@ -51,7 +57,7 @@ const OpenSource = dynamic(
 );
 
 const Projects = dynamic(
-  () => import("@/features/projects/components/Projects"),
+  () => import("@/features/portfolio/projects/components/Projects"),
   {
     loading: () => (
       <ContentWrapper>
@@ -61,13 +67,16 @@ const Projects = dynamic(
   },
 );
 
-const Blogs = dynamic(() => import("@/features/blogs/components/blog"), {
-  loading: () => (
-    <ContentWrapper>
-      <SectionSkeleton />
-    </ContentWrapper>
-  ),
-});
+const Blogs = dynamic(
+  () => import("@/features/portfolio/blogs/components/blog"),
+  {
+    loading: () => (
+      <ContentWrapper>
+        <SectionSkeleton />
+      </ContentWrapper>
+    ),
+  },
+);
 
 const Footer = dynamic(() => import("@/features/footer/components/footer"), {
   loading: () => (

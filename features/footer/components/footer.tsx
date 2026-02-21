@@ -1,5 +1,5 @@
 import { Panel, PanelContent } from "@/features/panel";
-import { USER } from "@/features/profile/data/user";
+import { USER } from "@/features/portfolio/profile/data/user";
 import Views from "@/hooks/views";
 
 export default function Footer() {

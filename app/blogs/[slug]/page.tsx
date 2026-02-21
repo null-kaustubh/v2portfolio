@@ -1,12 +1,14 @@
 import { CreativeWork, WithContext } from "schema-dts";
 import { ContentWrapper } from "../../(app)/page";
-import { USER } from "@/features/profile/data/user";
+import { USER } from "@/features/portfolio/profile/data/user";
 import { cn } from "@/lib/utils";
 import { SITE_INFO } from "@/config/site";
 import { notFound } from "next/navigation";
-import { blogs } from "@/features/blogs/data/blogData";
 import { Metadata } from "next";
-import { BlogItemType } from "@/features/blogs/types/blogType";
+import { getAllBlogs, getBlogBySlug } from "@/features/blog/data/blogs";
+import { Blog } from "@/features/blog/types/blog";
+// import { getTableOfContents } from "-core/content/toc";
+import BlogContent from "@/features/blog/components/blogContent";
 
 type PageProps = {
   params: Promise<{
@@ -14,50 +16,64 @@ type PageProps = {
   }>;
 };
 
+export async function generateStaticParams() {
+  const blogs = getAllBlogs();
+  return blogs.map((blog) => ({
+    slug: blog.slug,
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-
-  const blog = blogs.find((p) => p.slug === slug);
+  const slug = (await params).slug;
+  const blog = getBlogBySlug(slug);
 
   if (!blog) {
-    return {};
+    return notFound();
   }
 
+  const { title, description, image, createdAt, updatedAt } = blog.metadata;
+
+  const blogUrl = getBlogUrl(blog);
+  const ogImage = image || "";
+
   return {
-    title: blog.title,
-    description: blog.description,
+    title,
+    description,
+    alternates: {
+      canonical: blogUrl,
+    },
     openGraph: {
-      title: blog.title,
-      description: blog.description,
-      url: `/blogs/${blog.slug}`,
+      url: blogUrl,
+      type: "article",
       images: [
         {
-          url: blog.image,
+          url: ogImage,
           width: 1200,
           height: 630,
-          alt: blog.title,
+          alt: title,
         },
       ],
+      publishedTime: new Date(createdAt).toISOString(),
+      modifiedTime: new Date(updatedAt).toISOString(),
     },
     twitter: {
       card: "summary_large_image",
-      title: blog.title,
-      description: blog.description,
-      images: [blog.image],
+      images: [ogImage],
     },
   };
 }
 
 export default async function BlogPage({ params }: PageProps) {
-  const { slug } = await params;
-  const blog = blogs.find((p) => p.slug === slug);
+  const slug = (await params).slug;
+  const blog = getBlogBySlug(slug);
 
   if (!blog) {
     notFound();
   }
 
+  // const toc = getTableOfContents(blog.content);
   const jsonLd = getBlogPageJsonLd(blog);
 
   return (
@@ -82,7 +98,7 @@ export default async function BlogPage({ params }: PageProps) {
 
         <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-0 md:max-w-4xl lg:max-w-4xl">
           <ContentWrapper>
-            <div>Hello</div>
+            <BlogContent blog={blog} />
           </ContentWrapper>
         </div>
       </div>
@@ -90,17 +106,17 @@ export default async function BlogPage({ params }: PageProps) {
   );
 }
 
-function getBlogPageJsonLd(blog: BlogItemType): WithContext<CreativeWork> {
+function getBlogPageJsonLd(blog: Blog): WithContext<CreativeWork> {
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
 
-    name: blog.title,
-    description: blog.description,
-    url: `${SITE_INFO.url}/blogs/${blog.slug}`,
+    headline: blog.metadata.title,
+    description: blog.metadata.description,
+    url: `${SITE_INFO.url}${getBlogUrl(blog)}`,
 
-    datePublished: blog.date,
-    dateModified: blog.date,
+    datePublished: new Date(blog.metadata.createdAt).toISOString(),
+    dateModified: new Date(blog.metadata.updatedAt).toISOString(),
 
     inLanguage: "en",
 
@@ -116,11 +132,10 @@ function getBlogPageJsonLd(blog: BlogItemType): WithContext<CreativeWork> {
       name: USER.displayName,
     },
 
-    image: blog.image
-      ? {
-          "@type": "ImageObject",
-          url: blog.image,
-        }
-      : undefined,
+    image: blog.metadata.image,
   };
+}
+
+function getBlogUrl(blog: Blog) {
+  return `/blog/${blog.slug}`;
 }

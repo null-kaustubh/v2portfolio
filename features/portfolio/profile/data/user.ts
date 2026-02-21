@@ -10,7 +10,7 @@ export const USER: User = {
   flipSentences: [
     "Building things that work.",
     "Software Developer",
-    "DevOps Enthusiast",
+    "Open Source Contributor",
   ],
   address: "Mumbai, India",
   phoneNumber: "KzkxOTMyNDA3NjQ4NQ==", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)

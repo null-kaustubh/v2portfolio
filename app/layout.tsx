@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { META_THEME_COLORS, SITE_INFO } from "@/config/site";
-import { USER } from "@/features/profile/data/user";
+import { USER } from "@/features/portfolio/profile/data/user";
 import { departureMono, sfProDisplay } from "@/assets/fonts/fonts";
 import { cookies } from "next/headers";
 import clsx from "clsx";
