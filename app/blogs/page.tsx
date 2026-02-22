@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 import { blogs } from "@/features/portfolio/blogs/data/blogData";
 import { SITE_INFO } from "@/config/site";
+import Footer from "@/features/footer/components/footer";
 
 export const metadata: Metadata = {
   title: "Blogs",
@@ -36,6 +37,7 @@ export default function BlogsPage() {
         <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-0 md:max-w-4xl lg:max-w-4xl">
           <ContentWrapper>
             <div>Hello blogs</div>
+            <Footer />
           </ContentWrapper>
         </div>
       </div>

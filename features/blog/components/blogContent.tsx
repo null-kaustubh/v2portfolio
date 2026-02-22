@@ -5,68 +5,89 @@ import Image from "next/image";
 import rehypeHighlight from "@shikijs/rehype";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { BlogComponents } from "./blogComponents";
-import { SeparatorHorizontal } from "lucide-react";
+import { Calendar, Clock } from "lucide-react";
+import { Panel, PanelContent } from "@/features/panel";
+import { calculateReadingTime } from "@/lib/readTime";
+import { BlogToolbar } from "./blogToolbar";
 
 type BlogContentProps = {
   blog: Blog;
 };
 
 export default function BlogContent({ blog }: BlogContentProps) {
+  const readingTime = calculateReadingTime(blog.content);
   return (
-    <article className="mx-auto max-w-4xl">
-      {/* Hero Section */}
-      <header className="mb-8 space-y-6">
-        {blog.metadata.image && (
-          <div className="relative aspect-video overflow-hidden rounded-lg">
-            <Image
-              src={blog.metadata.image}
-              alt={blog.metadata.title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-        )}
+    <>
+      <BlogToolbar url={getBlogUrl(blog)} />
 
-        <div className="space-y-4">
-          <h1 className="text-4xl leading-tight font-bold lg:text-5xl">
-            {blog.metadata.title}
-          </h1>
+      <article className="mx-auto max-w-4xl">
+        {/* Hero Section */}
+        <header className="screen-line-before">
+          {blog.metadata.image && (
+            <div className="p-px sm:p-4">
+              <div className="relative aspect-video overflow-hidden rounded-xl ring-0 ring-secondary-foreground/20 sm:ring-1">
+                <Image
+                  src={blog.metadata.image}
+                  alt={blog.metadata.title}
+                  fill
+                  priority
+                  className="h-auto w-full object-cover"
+                />
+              </div>
+            </div>
+          )}
+          <Panel>
+            <PanelContent className="p-0">
+              <div>
+                <h1 className="p-4 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+                  {blog.metadata.title}
+                </h1>
 
-          <p className="text-muted-foreground text-xl">
-            {blog.metadata.description}
-          </p>
+                <p className="text-secondary-foreground text-lg leading-relaxed screen-line-after screen-line-before p-4 lg:text-xl">
+                  {blog.metadata.description}
+                </p>
 
-          <div className="text-muted-foreground flex items-center gap-2 text-sm">
-            {/*<Calender className="size-6" />*/}
-            <time dateTime={blog.metadata.createdAt}>
-              {formatFullDate(blog.metadata.createdAt)}
-            </time>
-          </div>
-        </div>
+                <div className="text-secondary-foreground flex justify-between items-center text-sm px-4 py-2">
+                  <div className="flex items-center justify-center gap-1.5">
+                    <Calendar size={16} />
+                    <time dateTime={blog.metadata.createdAt}>
+                      {formatFullDate(blog.metadata.createdAt)}
+                    </time>
+                  </div>
+                  <div className="flex items-center justify-center gap-1.5">
+                    <Clock size={16} />
+                    {readingTime}m
+                  </div>
+                </div>
+              </div>
+            </PanelContent>
+          </Panel>
+        </header>
 
-        <SeparatorHorizontal />
-      </header>
-
-      {/* Content */}
-      <div className="prose prose-neutral dark:prose-invert max-w-none">
-        <MDXRemote
-          source={blog.content}
-          components={BlogComponents}
-          options={{
-            mdxOptions: {
-              rehypePlugins: [
-                [
-                  rehypeHighlight,
-                  {
-                    theme: "github-dark",
-                  },
+        {/* Content */}
+        <div className="prose prose-neutral max-w-none pt-4 px-4">
+          <MDXRemote
+            source={blog.content}
+            components={BlogComponents}
+            options={{
+              mdxOptions: {
+                rehypePlugins: [
+                  [
+                    rehypeHighlight,
+                    {
+                      theme: "github-dark",
+                    },
+                  ],
                 ],
-              ],
-            },
-          }}
-        />
-      </div>
-    </article>
+              },
+            }}
+          />
+        </div>
+      </article>
+    </>
   );
+}
+
+export function getBlogUrl(blog: Blog) {
+  return `/blogs/${blog.slug}`;
 }

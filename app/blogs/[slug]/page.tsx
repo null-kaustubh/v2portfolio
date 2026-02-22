@@ -9,6 +9,7 @@ import { getAllBlogs, getBlogBySlug } from "@/features/blog/data/blogs";
 import { Blog } from "@/features/blog/types/blog";
 // import { getTableOfContents } from "-core/content/toc";
 import BlogContent from "@/features/blog/components/blogContent";
+import Footer from "@/features/footer/components/footer";
 
 type PageProps = {
   params: Promise<{
@@ -99,6 +100,7 @@ export default async function BlogPage({ params }: PageProps) {
         <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-0 md:max-w-4xl lg:max-w-4xl">
           <ContentWrapper>
             <BlogContent blog={blog} />
+            <Footer />
           </ContentWrapper>
         </div>
       </div>
@@ -137,5 +139,5 @@ function getBlogPageJsonLd(blog: Blog): WithContext<CreativeWork> {
 }
 
 function getBlogUrl(blog: Blog) {
-  return `/blog/${blog.slug}`;
+  return `/blogs/${blog.slug}`;
 }
