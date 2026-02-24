@@ -1,8 +1,10 @@
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "@/features/panel";
 import Link from "next/link";
-import { blogs } from "../data/blogData";
+import { getBlogPreviews } from "../data/blogData";
 import BlogItem from "./blogItem";
 import { ArrowRight } from "lucide-react";
+
+export const blogs = getBlogPreviews();
 
 export default function Blog() {
   const latestBlogs = blogs.slice(0, 3);

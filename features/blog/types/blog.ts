@@ -40,6 +40,8 @@ export type Blog = {
 export type BlogPreview = {
   slug: string;
   title: string;
-  category?: string;
-  icon?: string;
+  description: string;
+  date: string;
+  pinned?: boolean;
+  new?: boolean;
 };

@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { USER } from "@/features/portfolio/profile/data/user";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
-import { blogs } from "@/features/portfolio/blogs/data/blogData";
+import { getBlogPreviews } from "@/features/portfolio/blogs/data/blogData";
 import { SITE_INFO } from "@/config/site";
 import Footer from "@/features/footer/components/footer";
 
@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   title: "Blogs",
   description: "A collection of thoughts written by " + USER.displayName,
 };
+
+const blogs = getBlogPreviews();
 
 export default function BlogsPage() {
   return (

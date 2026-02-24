@@ -18,7 +18,7 @@ export function ExperienceRow({ item, isOpen, onHoverAction }: Props) {
     <motion.div
       layout
       onMouseEnter={!isMobile ? onHoverAction : undefined}
-      className={`group py-3 rounded-xl px-4 my-1.5 bg-muted/35 border border-edge/30 border-dashed`}
+      className={`group py-3 rounded-xl px-4 my-1.5 bg-muted/35 border border-edge/30 border-dashed cursor-default`}
       onClick={isMobile ? () => onHoverAction() : undefined}
       transition={{ layout: { duration: 0.35, ease: [0.4, 0, 0.2, 1] } }}
     >
