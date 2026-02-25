@@ -11,7 +11,7 @@ export default function BlogItem({ blog }: Props) {
   return (
     <Link
       href={`/blogs/${blog.slug}`}
-      className="block p-4 border-b border-border"
+      className="block p-4 border-b border-border group"
     >
       <div className="flex items-center justify-between gap-3">
         <div className="min-w-0">
@@ -25,7 +25,7 @@ export default function BlogItem({ blog }: Props) {
                 />
               )}
 
-              <h3 className="text-lg sm:text-2xl hover:underline underline-offset-3 tracking-wide truncate">
+              <h3 className="text-lg sm:text-2xl group-hover:underline underline-offset-3  tracking-wide truncate">
                 {blog.title}
               </h3>
             </div>

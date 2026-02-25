@@ -11,6 +11,8 @@ import { Blog } from "@/features/blog/types/blog";
 import BlogContent from "@/features/blog/components/blogContent";
 import Footer from "@/features/footer/components/footer";
 
+export const dynamic = "force-static";
+
 type PageProps = {
   params: Promise<{
     slug: string;
@@ -27,7 +29,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const slug = (await params).slug;
+  const { slug } = await params;
   const blog = getBlogBySlug(slug);
 
   if (!blog) {
@@ -67,7 +69,7 @@ export async function generateMetadata({
 }
 
 export default async function BlogPage({ params }: PageProps) {
-  const slug = (await params).slug;
+  const { slug } = await params;
   const blog = getBlogBySlug(slug);
 
   if (!blog) {

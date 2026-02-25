@@ -22,6 +22,7 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
+    "prd": "npm run build && npm run start",
     "lint": "eslint"
   },
   "dependencies": {
