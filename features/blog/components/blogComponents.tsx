@@ -78,6 +78,38 @@ export const BlogComponents = {
       {children}
     </p>
   ),
+  // Custom link styling
+  a: ({
+    href,
+    children,
+    ...props
+  }: {
+    href?: string;
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => (
+    <a
+      href={href}
+      target={href?.startsWith("http") ? "_blank" : undefined}
+      rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
+      className="font-medium text-primary-foreground underline underline-offset-4 hover:text-primary-foreground/80 transition-colors"
+      {...props}
+    >
+      {children}
+    </a>
+  ),
+  // Custom italic text styling
+  em: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => (
+    <em className="italic text-primary-foreground" {...props}>
+      {children}
+    </em>
+  ),
   // Custom list styling
   ul: ({
     children,

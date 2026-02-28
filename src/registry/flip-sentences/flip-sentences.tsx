@@ -60,20 +60,23 @@ export function FlipSentences({
           className,
         )}
         initial={{
-          y: 8,
           opacity: 0,
+          filter: "blur(4px)",
         }}
         animate={{
-          y: 0,
           opacity: 1,
+          filter: ["blur(0px)", "blur(1px)", "blur(0px)"],
         }}
         exit={{
-          y: -8,
           opacity: 0,
+          filter: "blur(4px)",
         }}
         transition={{
           duration: 0.3,
-          ease: "linear",
+          ease: "easeOut",
+        }}
+        style={{
+          textShadow: "0 0 0 transparent, 0 0 0 transparent, 0 0 0 transparent",
         }}
       >
         {sentences[currentSentence]}

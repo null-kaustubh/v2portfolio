@@ -31,9 +31,9 @@ export const Experience: ExperienceList = [
     logo: "https://assets.kaustubh.cloud/workplaces/Freelance.png",
     role: "Fullstack Developer",
     employmentType: "freelance",
-    status: "active",
+    status: "ended",
     from: "2024-07",
-    to: null,
+    to: "2026-02",
     description: [
       "Built and delivered client-facing web applications with modern stacks, focused on SEO improvements, performance optimization, codebase refactoring.",
       "ongoing Wix and WordPress maintenance.",

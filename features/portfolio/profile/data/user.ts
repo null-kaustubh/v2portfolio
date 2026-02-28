@@ -23,11 +23,6 @@ export const USER: User = {
       company: "Accelya",
       website: "https://w3.accelya.com/",
     },
-    {
-      title: "Freelance Full-Stack Developer",
-      company: "AlterIt",
-      website: "https://www.instagram.com/_alterit",
-    },
   ],
   about: `
 Hi! I'm Kaustubh Sankhe — a Software Developer passionate about creating high-performance, user-centric software solutions with intuitive and engaging designs.
