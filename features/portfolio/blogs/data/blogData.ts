@@ -13,6 +13,7 @@ export const getBlogPreviews = cache((): BlogPreview[] => {
     date: blog.metadata.createdAt,
     pinned: blog.metadata.pinned ?? false,
     new: isNewBlog(blog.metadata.createdAt),
+    image: blog.metadata.image,
   }));
 
   return previews.sort((a, b) => {
