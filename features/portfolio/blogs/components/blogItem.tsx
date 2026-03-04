@@ -2,16 +2,18 @@ import Link from "next/link";
 import type { BlogPreview } from "@/features/blog/types/blog";
 import { formatFullDate } from "@/lib/formatDate";
 import { Pin } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type Props = {
   blog: BlogPreview;
+  className?: string;
 };
 
-export default function BlogItem({ blog }: Props) {
+export default function BlogItem({ blog, className }: Props) {
   return (
     <Link
       href={`/blogs/${blog.slug}`}
-      className="block p-4 border-b border-border group"
+      className={cn("block p-4 border-b border-border group", className)}
     >
       <div className="flex items-center justify-between gap-3">
         <div className="min-w-0">

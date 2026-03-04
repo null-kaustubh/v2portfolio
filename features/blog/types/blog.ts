@@ -44,4 +44,5 @@ export type BlogPreview = {
   date: string;
   pinned?: boolean;
   new?: boolean;
+  image?: string;
 };

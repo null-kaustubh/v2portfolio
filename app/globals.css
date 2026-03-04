@@ -196,6 +196,16 @@
     @apply relative after:absolute after:bottom-0 after:-left-[100vw] after:-z-1 after:h-px after:w-[200vw] after:bg-edge;
 }
 
+@utility screen-line-before-elevated {
+    @apply relative before:absolute before:top-0 before:-left-[100vw]
+         before:z-10 before:h-px before:w-[200vw] before:bg-edge;
+}
+
+@utility screen-line-after-elevated {
+    @apply relative after:absolute after:bottom-0 after:-left-[100vw]
+         after:z-10 after:h-px after:w-[200vw] after:bg-edge;
+}
+
 @utility step {
     counter-increment: step;
     &::before {
