@@ -1,4 +1,4 @@
-import { YearMonth } from "@/features/career-path/types/experienceType";
+import { YearMonth } from "@/features/portfolio/career-path/types/experienceType";
 
 export function formatYearMonth(
   value: string | null,
@@ -41,4 +41,23 @@ export function formatDateRange(
   });
 
   return `${fromText} – ${toText}`;
+}
+
+export function formatFullDate(
+  value: string | null,
+  options?: { shortMonth?: boolean; lowercase?: boolean },
+) {
+  if (!value) return "";
+
+  const [year, month, day] = value.split("-").map(Number);
+
+  const date = new Date(year, month - 1, day);
+
+  const formatted = date.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: options?.shortMonth ? "short" : "long",
+    year: "numeric",
+  });
+
+  return options?.lowercase ? formatted.toLowerCase() : formatted;
 }

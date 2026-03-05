@@ -1,16 +1,16 @@
 import dynamic from "next/dynamic";
 
-import { Overview } from "@/features/overview/overview";
-import { ProfileHeader } from "@/features/profile/components/profile-header";
-import { USER } from "@/features/profile/data/user";
+import { Overview } from "@/features/portfolio/overview/overview";
+import { ProfileHeader } from "@/features/portfolio/profile/components/profile-header";
+import { USER } from "@/features/portfolio/profile/data/user";
 import { cn } from "@/lib/utils";
 import dayjs from "dayjs";
 import { ProfilePage as PageSchema, WithContext } from "schema-dts";
 import SectionSkeleton from "@/components/skeleton";
-import Hero from "@/features/hero/hero";
+import Hero from "@/features/portfolio/hero/hero";
 
 const Career = dynamic(
-  () => import("@/features/career-path/components/career"),
+  () => import("@/features/portfolio/career-path/components/career"),
   {
     loading: () => (
       <ContentWrapper>
@@ -20,10 +20,10 @@ const Career = dynamic(
   },
 );
 
-const TechStack = dynamic(
+const Skills = dynamic(
   () =>
-    import("@/features/techstack/components/techstack").then(
-      (m) => m.TechStack,
+    import("@/features/portfolio/techstack/components/skills").then(
+      (m) => m.Skills,
     ),
   {
     loading: () => (
@@ -34,16 +34,41 @@ const TechStack = dynamic(
   },
 );
 
-const SocialLinks = dynamic(() => import("@/features/socials/SocialLinks"), {
-  loading: () => (
-    <ContentWrapper>
-      <SectionSkeleton />
-    </ContentWrapper>
-  ),
-});
+const SocialLinks = dynamic(
+  () => import("@/features/portfolio/socials/SocialLinks"),
+  {
+    loading: () => (
+      <ContentWrapper>
+        <SectionSkeleton />
+      </ContentWrapper>
+    ),
+  },
+);
+
+const OpenSource = dynamic(
+  () => import("@/features/portfolio/open-source/components/opensource"),
+  {
+    loading: () => (
+      <ContentWrapper>
+        <SectionSkeleton />
+      </ContentWrapper>
+    ),
+  },
+);
 
 const Projects = dynamic(
-  () => import("@/features/projects/components/Projects"),
+  () => import("@/features/portfolio/projects/components/Projects"),
+  {
+    loading: () => (
+      <ContentWrapper>
+        <SectionSkeleton />
+      </ContentWrapper>
+    ),
+  },
+);
+
+const Blogs = dynamic(
+  () => import("@/features/portfolio/blogs/components/blog"),
   {
     loading: () => (
       <ContentWrapper>
@@ -78,7 +103,7 @@ export default function Page() {
           className={cn(
             "pointer-events-none absolute inset-y-0 -left-[100vw] -right-[100vw] -z-10",
             "bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)]",
-            "bg-[length:10px_10px] [--pattern-foreground:var(--color-edge)]/30",
+            "bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/30",
           )}
         />
 
@@ -101,11 +126,19 @@ export default function Page() {
           </ContentWrapper>
 
           <ContentWrapper>
-            <TechStack />
+            <Skills />
+          </ContentWrapper>
+
+          <ContentWrapper>
+            <OpenSource />
           </ContentWrapper>
 
           <ContentWrapper>
             <Projects />
+          </ContentWrapper>
+
+          <ContentWrapper>
+            <Blogs />
           </ContentWrapper>
 
           <ContentWrapper>

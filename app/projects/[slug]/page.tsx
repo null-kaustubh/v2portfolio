@@ -1,12 +1,13 @@
 import { CreativeWork, WithContext } from "schema-dts";
 import { ContentWrapper } from "../../(app)/page";
 import dayjs from "dayjs";
-import { USER } from "@/features/profile/data/user";
+import { USER } from "@/features/portfolio/profile/data/user";
 import { cn } from "@/lib/utils";
 import { SITE_INFO } from "@/config/site";
 import { notFound } from "next/navigation";
-import { Project, projects } from "@/features/projects/data/projects";
+import { projects } from "@/features/portfolio/projects/data/projects";
 import { Metadata } from "next";
+import { Project } from "@/features/portfolio/projects/types/projectTypes";
 
 type PageProps = {
   params: Promise<{
@@ -76,7 +77,7 @@ export default async function ProjectPage({ params }: PageProps) {
           className={cn(
             "pointer-events-none absolute inset-y-0 -left-[100vw] -right-[100vw] -z-10",
             "bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)]",
-            "bg-[length:10px_10px] [--pattern-foreground:var(--color-edge)]/30",
+            "bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/30",
           )}
         />
 

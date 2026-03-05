@@ -1,9 +1,11 @@
 import { CollectionPage, WithContext } from "schema-dts";
 import { ContentWrapper } from "../(app)/page";
 import dayjs from "dayjs";
-import { USER } from "@/features/profile/data/user";
+import { USER } from "@/features/portfolio/profile/data/user";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
+import { projects } from "@/features/portfolio/projects/data/projects";
+import { SITE_INFO } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -30,7 +32,7 @@ export default function ProjectsPage() {
           className={cn(
             "pointer-events-none absolute inset-y-0 -left-[100vw] -right-[100vw] -z-10",
             "bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)]",
-            "bg-[length:10px_10px] [--pattern-foreground:var(--color-edge)]/30",
+            "bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/30",
           )}
         />
 
@@ -53,6 +55,12 @@ function getProjectsPageJsonLd(): WithContext<CollectionPage> {
     dateModified: dayjs().toISOString(),
     mainEntity: {
       "@type": "ItemList",
+      itemListElement: projects.map((project, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: project.title,
+        url: `${SITE_INFO.url}/projects/${project.slug}`,
+      })),
     },
     about: {
       "@type": "Person",

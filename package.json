@@ -2,16 +2,34 @@
   "name": "v2portfolio",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Kaustubh Sankhe",
+    "email": "kaustubhs2903@gmail.com",
+    "url": "https://github.com/null-kaustubh"
+  },
+  "contributors": [
+    {
+      "name": "Kaustubh Sankhe",
+      "email": "kaustubhs2903@gmail.com",
+      "url": "https://github.com/null-kaustubh"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/null-kaustubh/v2portfolio.git"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
+    "prd": "npm run build && npm run start",
     "lint": "eslint"
   },
   "dependencies": {
     "@date-fns/tz": "^1.4.1",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@shikijs/rehype": "^3.22.0",
     "@tailwindcss/typography": "^0.5.19",
     "@upstash/redis": "^1.36.2",
     "blurhash-base64": "^0.0.3",
@@ -19,16 +37,20 @@
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.18",
+    "fumadocs-core": "^16.6.2",
+    "gray-matter": "^4.0.3",
     "js-cookie": "^3.0.5",
     "libphonenumber-js": "^1.12.29",
     "lucide-react": "^0.546.0",
     "motion": "^12.23.26",
     "next": "^16.1.6",
+    "next-mdx-remote": "^6.0.0",
     "radix-ui": "^1.4.3",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "schema-dts": "^1.1.5",
-    "tailwind-merge": "^3.3.1"
+    "shiki": "^3.22.0",
+    "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -37,6 +59,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/unist": "^3.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
     "tailwindcss": "^4",

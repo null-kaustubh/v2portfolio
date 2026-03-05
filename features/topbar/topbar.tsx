@@ -82,7 +82,7 @@ export default function TopBar() {
 
       {/* gradient shadow */}
       <div className="pointer-events-none absolute top-[calc(100%+1px)] left-0 right-0 px-4 sm:px-6 md:px-0">
-        <div className="mx-auto md:max-w-4xl lg:max-w-4xl h-[40px] blur-gradient-top" />
+        <div className="mx-auto md:max-w-4xl lg:max-w-4xl h-10 blur-gradient-top" />
       </div>
 
       {/*<div className="absolute top-12 w-5/6 md:w-3/4 lg:w-1/2 h-[40px] pointer-events-none blur-gradient-top" />*/}
