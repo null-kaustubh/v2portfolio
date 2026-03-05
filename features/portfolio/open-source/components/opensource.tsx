@@ -1,18 +1,29 @@
+"use client";
+
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "@/features/panel";
 import { mockContributions } from "../data/mockContributions";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpRight } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useState } from "react";
 
 export default function OpenSource() {
-  const contributions = mockContributions;
+  const contributions = mockContributions.sort((a, b) =>
+    a.status === "merged" && b.status !== "merged" ? -1 : 1,
+  );
+
   const hasContributions = contributions.length > 0;
+  const [expanded, setExpanded] = useState(false);
+
+  const visibleContributions = expanded
+    ? contributions.slice(0, 6)
+    : contributions.slice(0, 3);
 
   return (
     <Panel id="open-source">
@@ -23,13 +34,13 @@ export default function OpenSource() {
       <PanelContent>
         {hasContributions ? (
           <div className="divide-y divide-border/60">
-            {contributions.map((c) => (
+            {visibleContributions.map((c, index) => (
               <Link
                 href={c.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                key={c.id}
-                className="relative px-2 py-3 flex flex-col sm:flex-row gap-2 sm:items-center justify-between group"
+                key={`${c.id}-${index}`}
+                className="relative px-2 py-3 first:pt-2 flex flex-col sm:flex-row gap-2 sm:items-center justify-between group"
               >
                 <div className="flex items-start sm:items-center gap-2 text-secondary-foreground">
                   <TooltipProvider>
@@ -74,6 +85,29 @@ export default function OpenSource() {
                 </div>
               </Link>
             ))}
+            {contributions.length > 3 && (
+              <div className="pt-4 flex items-center justify-center">
+                <button
+                  onClick={() => setExpanded(!expanded)}
+                  className="group inline-flex items-center gap-1.5
+                  text-sm uppercase font-mono text-secondary-foreground
+                  hover:text-foreground transition-colors cursor-pointer"
+                >
+                  {expanded ? "Show less" : "See more"}
+                  {expanded ? (
+                    <ArrowUp
+                      size={16}
+                      className="translate-y-[0.5px] transition-transform group-hover:-translate-y-0.5"
+                    />
+                  ) : (
+                    <ArrowDown
+                      size={16}
+                      className="-translate-y-[0.5px] transition-transform group-hover:translate-y-0.5"
+                    />
+                  )}
+                </button>
+              </div>
+            )}
           </div>
         ) : (
           <div className="text-secondary-foreground font-mono lowercase text-xs sm:text-sm">
