@@ -13,7 +13,14 @@ export async function getContributions(): Promise<Contribution[]> {
     },
   );
 
+  if (!res.ok) {
+    console.error("GitHub API error:", res.status);
+    return [];
+  }
+
   const data: GithubSearchResponse = await res.json();
+
+  if (!data?.items) return [];
 
   return data.items.map((pr) => ({
     id: `${pr.repository_url}-${pr.number}`,
@@ -35,5 +42,5 @@ type GithubPullRequest = {
 };
 
 type GithubSearchResponse = {
-  items: GithubPullRequest[];
+  items?: GithubPullRequest[];
 };
