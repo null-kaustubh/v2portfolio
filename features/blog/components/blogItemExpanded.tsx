@@ -17,13 +17,14 @@ export default function BlogItemExpanded({ blog, className }: Props) {
       className={cn("group flex flex-col", className)}
     >
       {/* Image container */}
-      <div className="relative aspect-video overflow-hidden bg-muted">
+      <div className="relative overflow-hidden bg-muted">
         {blog.image && (
           <Image
             src={blog.image}
             alt={blog.title}
-            fill
-            className="h-full w-full object-cover border-b border-border"
+            width={1200}
+            height={630}
+            className="h-auto w-full object-contain border-b border-border"
           />
         )}
 

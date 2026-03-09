@@ -25,13 +25,14 @@ export default function BlogContent({ blog }: BlogContentProps) {
         <header className="screen-line-before">
           {blog.metadata.image && (
             <div className="p-px sm:p-4">
-              <div className="relative aspect-video overflow-hidden rounded-xl ring-0 ring-secondary-foreground/20 sm:ring-1">
+              <div className="relative overflow-hidden rounded-xl ring-0 ring-secondary-foreground/20 sm:ring-1">
                 <Image
                   src={blog.metadata.image}
                   alt={blog.metadata.title}
-                  fill
+                  width={1200}
+                  height={630}
                   priority
-                  className="h-auto w-full object-cover"
+                  className="w-full h-auto object-contain"
                 />
               </div>
             </div>
