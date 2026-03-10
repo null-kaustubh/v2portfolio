@@ -1,59 +1,25 @@
-import { slugify } from "../../../../lib/slugify";
 import { Project } from "../types/projectTypes";
 
-export const projects: Project[] = [
-  {
-    title: "Journl",
-    description: "A journaling app for developers to document learning.",
-    image: "https://assets.kaustubh.cloud/images/og-image.png",
-    blurhash: "L35#bB~qxuD%_3?bxuIo9FIUoexu",
-    status: "in development",
-    tech: ["Next.js", "PostgreSQL", "Prisma", "NextAuth"],
-    slug: slugify("Journl"),
-  },
-  {
-    title: "Code Snippet Studio",
-    description: "Turn code snippets into beautiful images.",
-    image: "https://assets.kaustubh.cloud/images/og-image.png",
-    blurhash: "U35#bB~qxuD%_3?bxuIo9FIUoexu004nM{%M",
-    status: "live",
-    tech: ["Next.js", "Tailwind", "Canvas"],
-    slug: slugify("Code Snippet Studio"),
-  },
-  {
-    title: "Normal",
-    description: "A journaling app for developers to document learning.",
-    image: "https://assets.kaustubh.cloud/images/og-image.png",
-    blurhash: "U35#bB~qxuD%_3?bxuIo9FIUoexu004nM{%M",
-    status: "on hiatus",
-    tech: ["Next.js", "PostgreSQL", "Prisma", "NextAuth"],
-    slug: slugify("Normal"),
-  },
-  {
-    title: "Newer",
-    description: "Turn code snippets into beautiful images.",
-    image: "https://assets.kaustubh.cloud/images/og-image.png",
-    blurhash: "U35#bB~qxuD%_3?bxuIo9FIUoexu004nM{%M",
-    status: "live",
-    tech: ["Next.js", "Tailwind", "Canvas"],
-    slug: slugify("Newer"),
-  },
-  {
-    title: "Newest",
-    description: "Turn code snippets into beautiful images.",
-    image: "https://assets.kaustubh.cloud/images/og-image.png",
-    blurhash: "U35#bB~qxuD%_3?bxuIo9FIUoexu004nM{%M",
-    status: "live",
-    tech: ["Next.js", "Tailwind", "Node.js", "PostgreSQL"],
-    slug: slugify("Newest"),
-  },
-  {
-    title: "Recall",
-    description: "Turn code snippets into beautiful images.",
-    image: "https://assets.kaustubh.cloud/images/og-image.png",
-    blurhash: "U35#bB~qxuD%_3?bxuIo9FIUoexu004nM{%M",
-    status: "live",
-    tech: ["Next.js", "Tailwind", "MongoDb"],
-    slug: slugify("Recall"),
-  },
-];
+export const projects: Project[] = [];
+
+import { cache } from "react";
+import { ProjectPreview } from "@/features/project/types/project";
+import { getAllProjects } from "@/features/project/data/projects";
+
+export const getProjectPreviews = cache((): ProjectPreview[] => {
+  const projects = getAllProjects();
+
+  const previews = projects.map((project) => ({
+    slug: project.slug,
+    title: project.metadata.title,
+    description: project.metadata.description,
+    status: project.metadata.status,
+    tech: project.metadata.tech,
+    date: project.metadata.createdAt,
+    image: project.metadata.image,
+  }));
+
+  return previews.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+});

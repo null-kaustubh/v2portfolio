@@ -4,7 +4,6 @@ export type Project = {
   title: string;
   description: string;
   image: string;
-  blurhash: string;
   status: ProjectStatus;
   tech: string[];
   slug: string;

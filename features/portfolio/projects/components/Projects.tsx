@@ -1,20 +1,16 @@
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "@/features/panel";
-import ProjectItem from "./ProjectItem";
-import { blurhashToBase64 } from "blurhash-base64";
-import { projects } from "../data/projects";
+import { getProjectPreviews } from "../data/projects";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import ProjectItemPortfolio from "./ProjectItem";
 
 const PREVIEW_COUNT = 2;
 
 export default function Projects() {
-  const projectsWithBlur = projects.map((project) => ({
-    ...project,
-    blurDataURL: blurhashToBase64(project.blurhash),
-  }));
+  const projects = getProjectPreviews();
 
-  const previewProjects = projectsWithBlur.slice(0, PREVIEW_COUNT);
-  const hasMore = projectsWithBlur.length > PREVIEW_COUNT;
+  const previewProjects = projects.slice(0, PREVIEW_COUNT);
+  const hasMore = projects.length > PREVIEW_COUNT;
 
   return (
     <Panel id="projects">
@@ -29,7 +25,7 @@ export default function Projects() {
               key={project.slug}
               className="border-b border-border md:odd:border-r"
             >
-              <ProjectItem key={project.slug} project={project} />
+              <ProjectItemPortfolio key={project.slug} project={project} />
             </div>
           ))}
         </div>

@@ -1,15 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ProjectPreview } from "@/features/project/types/project";
 
 type ProjectItemProps = {
-  project: {
-    title: string;
-    image: string;
-    blurDataURL: string;
-    status: "live" | "in development" | "on hiatus";
-    tech: string[];
-    slug: string;
-  };
+  project: ProjectPreview;
 };
 
 const statusStyles = {
@@ -19,7 +13,7 @@ const statusStyles = {
     "bg-secondary-foreground/10 text-secondary-foreground border-border",
 };
 
-export default function ProjectItem({ project }: ProjectItemProps) {
+export default function ProjectItemPortfolio({ project }: ProjectItemProps) {
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -32,8 +26,6 @@ export default function ProjectItem({ project }: ProjectItemProps) {
           alt={project.title}
           fill
           sizes="(min-width: 768px) 50vw, 100vw"
-          placeholder="blur"
-          blurDataURL={project.blurDataURL}
           className="object-cover filter: blur(20px); transition: filter 0.5s ease-out;"
           draggable={false}
         />
