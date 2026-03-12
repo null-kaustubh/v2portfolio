@@ -1,6 +1,6 @@
 export type ProjectStatus = "live" | "in development" | "on hiatus";
 
-export type Project = {
+export type ProjectTypes = {
   title: string;
   description: string;
   image: string;

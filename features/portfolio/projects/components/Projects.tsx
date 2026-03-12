@@ -19,33 +19,41 @@ export default function Projects() {
       </PanelHeader>
 
       <PanelContent className="p-0">
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          {previewProjects.map((project) => (
-            <div
-              key={project.slug}
-              className="border-b border-border md:odd:border-r"
-            >
-              <ProjectItemPortfolio key={project.slug} project={project} />
+        {projects.length === 0 ? (
+          <div className="p-4 text-sm text-secondary-foreground font-mono">
+            cool stuff on the way...
+          </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              {previewProjects.map((project) => (
+                <div
+                  key={project.slug}
+                  className="border-b border-border md:odd:border-r"
+                >
+                  <ProjectItemPortfolio key={project.slug} project={project} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        {hasMore && (
-          <div className="p-4 flex items-center justify-center">
-            <Link
-              href="/projects"
-              className="
+            {hasMore && (
+              <div className="p-4 flex items-center justify-center">
+                <Link
+                  href="/projects"
+                  className="
                     group inline-flex items-center gap-1.5
                     text-sm uppercase font-mono text-secondary-foreground
                     hover:text-foreground transition-colors
                   "
-            >
-              View all projects
-              <ArrowRight
-                size={14}
-                className="transition-transform group-hover:translate-x-0.5"
-              />
-            </Link>
-          </div>
+                >
+                  View all projects
+                  <ArrowRight
+                    size={14}
+                    className="transition-transform group-hover:translate-x-0.5"
+                  />
+                </Link>
+              </div>
+            )}
+          </>
         )}
       </PanelContent>
     </Panel>
