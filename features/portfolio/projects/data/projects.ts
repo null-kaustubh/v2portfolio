@@ -1,6 +1,6 @@
-import { Project } from "../types/projectTypes";
+import { ProjectTypes } from "../types/projectTypes";
 
-export const projects: Project[] = [];
+export const projects: ProjectTypes[] = [];
 
 import { cache } from "react";
 import { ProjectPreview } from "@/features/project/types/project";

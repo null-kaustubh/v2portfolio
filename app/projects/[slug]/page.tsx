@@ -12,7 +12,10 @@ import ProjectContent, {
   getProjectUrl,
 } from "@/features/project/components/projectContent";
 import Footer from "@/features/footer/components/footer";
-import { getProjectBySlug } from "@/features/project/data/projects";
+import {
+  getAllProjects,
+  getProjectBySlug,
+} from "@/features/project/data/projects";
 
 type PageProps = {
   params: Promise<{
@@ -20,15 +23,22 @@ type PageProps = {
   }>;
 };
 
+export async function generateStaticParams() {
+  const projects = getAllProjects();
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
 
-  const project = projects.find((p) => p.slug === slug);
+  const project = getProjectBySlug(slug);
 
   if (!project) {
-    return {};
+    return notFound();
   }
 
   const { title, description, image, createdAt, updatedAt } = project.metadata;
