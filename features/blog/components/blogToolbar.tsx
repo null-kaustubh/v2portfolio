@@ -10,9 +10,19 @@ import {
 } from "@/components/ui/tooltip";
 import { AnimatePresence, motion } from "motion/react";
 
-export function BlogToolbar({ url }: { url: string }) {
+type ToolbarType = "blog" | "project";
+
+interface BlogToolbarProps {
+  url: string;
+  type: ToolbarType;
+}
+
+export function BlogToolbar({ url, type }: BlogToolbarProps) {
   const router = useRouter();
   const [copied, setCopied] = useState(false);
+
+  const route = type === "blog" ? "/blogs" : "/projects";
+  const label = type === "blog" ? "all blogs" : "all projects";
 
   const absoluteUrl = url.startsWith("http")
     ? url
@@ -24,11 +34,11 @@ export function BlogToolbar({ url }: { url: string }) {
     <>
       <div className="mx-auto flex max-w-4xl items-center justify-between p-4">
         <button
-          onClick={() => router.push("/blogs")}
+          onClick={() => router.push(route)}
           className="flex items-center gap-2 text-xs sm:text-sm font-mono text-secondary-foreground transition-opacity hover:opacity-70 cursor-pointer"
         >
           <ArrowLeft size={16} />
-          all blogs
+          {label}
         </button>
 
         <Tooltip>
