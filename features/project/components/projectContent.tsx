@@ -7,7 +7,7 @@ import { BlogComponents } from "@/features/blog/components/blogComponents";
 import { Calendar, Clock } from "lucide-react";
 import { Panel, PanelContent } from "@/features/panel";
 import { calculateReadingTime } from "@/lib/readTime";
-import { BlogToolbar } from "@/features/blog/components/blogToolbar";
+import { Toolbar } from "@/features/blog/components/Toolbar";
 import { Project } from "@/features/project/types/project";
 
 type ProjectContentProps = {
@@ -18,7 +18,7 @@ export default function ProjectContent({ project }: ProjectContentProps) {
   const readingTime = calculateReadingTime(project.content);
   return (
     <>
-      <BlogToolbar url={getProjectUrl(project)} />
+      <Toolbar url={getProjectUrl(project)} type="project" />
 
       <article className="mx-auto max-w-4xl">
         {/* Hero Section */}

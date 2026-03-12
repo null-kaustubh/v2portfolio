@@ -17,7 +17,7 @@ interface BlogToolbarProps {
   type: ToolbarType;
 }
 
-export function BlogToolbar({ url, type }: BlogToolbarProps) {
+export function Toolbar({ url, type }: BlogToolbarProps) {
   const router = useRouter();
   const [copied, setCopied] = useState(false);
 

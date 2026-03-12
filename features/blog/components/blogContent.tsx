@@ -8,7 +8,7 @@ import { BlogComponents } from "./blogComponents";
 import { Calendar, Clock } from "lucide-react";
 import { Panel, PanelContent } from "@/features/panel";
 import { calculateReadingTime } from "@/lib/readTime";
-import { BlogToolbar } from "./blogToolbar";
+import { Toolbar } from "./Toolbar";
 
 type BlogContentProps = {
   blog: Blog;
@@ -18,7 +18,7 @@ export default function BlogContent({ blog }: BlogContentProps) {
   const readingTime = calculateReadingTime(blog.content);
   return (
     <>
-      <BlogToolbar url={getBlogUrl(blog)} />
+      <Toolbar url={getBlogUrl(blog)} type="blog" />
 
       <article className="mx-auto max-w-4xl">
         {/* Hero Section */}
