@@ -8,4 +8,6 @@ export type ProjectTypes = {
   tech: string[];
   slug: string;
   date?: string;
+  githubUrl?: string;
+  liveUrl?: string;
 };

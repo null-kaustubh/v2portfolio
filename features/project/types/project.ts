@@ -24,6 +24,14 @@ export type ProjectMetadata = {
    * Technologies used in the project.
    */
   tech: string[];
+  /**
+   * GitHub URL for the project.
+   */
+  githubUrl: string;
+  /**
+   * Live URL for the project.
+   */
+  liveUrl: string;
 };
 
 export type Project = {
