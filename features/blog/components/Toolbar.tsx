@@ -36,6 +36,7 @@ export function Toolbar({ url, type }: BlogToolbarProps) {
         <button
           onClick={() => router.push(route)}
           className="flex items-center gap-2 text-xs sm:text-sm font-mono text-secondary-foreground transition-opacity hover:opacity-70 cursor-pointer"
+          aria-label={`${label} button`}
         >
           <ArrowLeft size={16} />
           {label}
@@ -52,6 +53,7 @@ export function Toolbar({ url, type }: BlogToolbarProps) {
                 setTimeout(() => setCopied(false), 2000);
               }}
               className="flex items-center gap-2 rounded-lg bg-border/50 p-1.5 text-sm text-secondary-foreground transition hover:opacity-70 hover:text-primary-foreground cursor-pointer"
+              aria-label="Share blog post"
             >
               <Share size={16} />
             </button>

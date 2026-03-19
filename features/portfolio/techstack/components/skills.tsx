@@ -49,6 +49,7 @@ export function Skills() {
             <button
               className="flex items-center justify-center cursor-pointer text-secondary-foreground hover:text-foreground transition-[color] duration-300 -m-2"
               onClick={() => setSorted((prev) => !prev)}
+              aria-label="sort button"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
