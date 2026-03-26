@@ -28,7 +28,11 @@ export async function getContributions(): Promise<Contribution[]> {
     title: pr.title,
     url: pr.html_url,
     prId: pr.number,
-    status: pr.state === "open" ? "open" : "merged",
+    status: pr.pull_request?.merged_at
+      ? "merged"
+      : pr.state === "closed"
+        ? "closed"
+        : "open",
     type: "PR",
   }));
 }
@@ -39,6 +43,9 @@ type GithubPullRequest = {
   html_url: string;
   state: "open" | "closed";
   repository_url: string;
+  pull_request?: {
+    merged_at: string | null;
+  };
 };
 
 type GithubSearchResponse = {
