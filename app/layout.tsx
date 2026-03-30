@@ -2,7 +2,11 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { META_THEME_COLORS, SITE_INFO } from "@/config/site";
 import { USER } from "@/features/portfolio/profile/data/user";
-import { departureMono, sfProDisplay } from "@/assets/fonts/fonts";
+import {
+  departureMono,
+  sfProDisplay,
+  fragmentMono,
+} from "@/assets/fonts/fonts";
 import { cookies } from "next/headers";
 import clsx from "clsx";
 import ThemeProvider, { Theme } from "@/context/ThemeProvider";
@@ -74,6 +78,7 @@ export default async function RootLayout({
         "overflow-x-hidden antialiased",
         departureMono.variable,
         sfProDisplay.variable,
+        fragmentMono.variable,
       )}
       data-color-theme={theme}
       style={{

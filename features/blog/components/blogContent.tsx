@@ -76,7 +76,11 @@ export default function BlogContent({ blog }: BlogContentProps) {
                   [
                     rehypeHighlight,
                     {
-                      theme: "github-dark",
+                      themes: {
+                        light: "one-light",
+                        dark: "one-dark-pro",
+                      },
+                      defaultColor: false,
                     },
                   ],
                 ],

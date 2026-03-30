@@ -6,7 +6,7 @@ type ProjectItemProps = {
   project: ProjectTypes;
 };
 
-const statusStyles = {
+export const statusStyles = {
   live: "bg-green-500/10 text-green-600 border-green-500/40",
   "in development": "bg-yellow-500/10 text-yellow-600 border-yellow-500/20",
   "on hiatus":

@@ -15,7 +15,7 @@ export default function Projects() {
   return (
     <Panel id="projects">
       <PanelHeader>
-        <PanelTitle>Projects</PanelTitle>
+        <PanelTitle>Featured Projects</PanelTitle>
       </PanelHeader>
 
       <PanelContent className="p-0">

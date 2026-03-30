@@ -34,6 +34,19 @@ export type ProjectMetadata = {
   liveUrl: string;
 };
 
+export type GithubStats = {
+  stars?: number;
+  forks?: number;
+  issues?: number;
+  watchers?: number;
+  license?: string | null;
+};
+
+export type GithubLanguage = {
+  name: string;
+  percentage: string;
+};
+
 export type Project = {
   /** Parsed frontmatter metadata from the MDX file. */
   metadata: ProjectMetadata;
@@ -41,6 +54,11 @@ export type Project = {
   slug: string;
   /** MDX content body without frontmatter. */
   content: string;
+
+  github?: {
+    stats?: GithubStats;
+    languages?: GithubLanguage[];
+  };
 };
 
 /**

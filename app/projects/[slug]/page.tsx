@@ -5,7 +5,6 @@ import { USER } from "@/features/portfolio/profile/data/user";
 import { cn } from "@/lib/utils";
 import { SITE_INFO } from "@/config/site";
 import { notFound } from "next/navigation";
-import { projects } from "@/features/portfolio/projects/data/projects";
 import { Metadata } from "next";
 import { Project } from "@/features/project/types/project";
 import ProjectContent, {
@@ -35,7 +34,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
 
-  const project = getProjectBySlug(slug);
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     return notFound();
@@ -75,7 +74,7 @@ export async function generateMetadata({
 
 export default async function ProjectPage({ params }: PageProps) {
   const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     notFound();

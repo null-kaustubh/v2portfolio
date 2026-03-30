@@ -141,6 +141,7 @@
 
     --font-sans: var(--font-sf-pro-display);
     --font-mono: var(--font-departure-mono);
+    --font-code: var(--font-fragment-mono);
 
     --shadow-popover: var(--shadow-popover);
 
@@ -301,6 +302,19 @@
     display: none;
 }
 
+/* Shiki dual themes with transparent background */
+[data-color-theme="light"] .shiki,
+[data-color-theme="light"] .shiki span {
+    color: var(--shiki-light) !important;
+    background-color: var(--shiki-light-bg) !important;
+}
+
+[data-color-theme="dark"] .shiki,
+[data-color-theme="dark"] .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+}
+
 body {
     font-family: var(--font-sf-pro-display);
 }
@@ -343,6 +357,10 @@ body {
     * {
         scrollbar-width: thin;
         scrollbar-color: var(--border) transparent;
+    }
+
+    .prose pre code {
+        font-family: inherit;
     }
 
     [id] {
