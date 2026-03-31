@@ -8,7 +8,7 @@ import { BlogComponents } from "./blogComponents";
 import { Calendar, Clock } from "lucide-react";
 import { Panel, PanelContent } from "@/features/panel";
 import { calculateReadingTime } from "@/lib/readTime";
-import { BlogToolbar } from "./blogToolbar";
+import { Toolbar } from "./Toolbar";
 
 type BlogContentProps = {
   blog: Blog;
@@ -18,20 +18,21 @@ export default function BlogContent({ blog }: BlogContentProps) {
   const readingTime = calculateReadingTime(blog.content);
   return (
     <>
-      <BlogToolbar url={getBlogUrl(blog)} />
+      <Toolbar url={getBlogUrl(blog)} type="blog" />
 
       <article className="mx-auto max-w-4xl">
         {/* Hero Section */}
         <header className="screen-line-before">
           {blog.metadata.image && (
             <div className="p-px sm:p-4">
-              <div className="relative aspect-video overflow-hidden rounded-xl ring-0 ring-secondary-foreground/20 sm:ring-1">
+              <div className="relative overflow-hidden rounded-xl ring-0 ring-secondary-foreground/20 sm:ring-1">
                 <Image
                   src={blog.metadata.image}
                   alt={blog.metadata.title}
-                  fill
+                  width={1200}
+                  height={630}
                   priority
-                  className="h-auto w-full object-cover"
+                  className="w-full h-auto object-contain"
                 />
               </div>
             </div>
@@ -75,7 +76,11 @@ export default function BlogContent({ blog }: BlogContentProps) {
                   [
                     rehypeHighlight,
                     {
-                      theme: "github-dark",
+                      themes: {
+                        light: "one-light",
+                        dark: "one-dark-pro",
+                      },
+                      defaultColor: false,
                     },
                   ],
                 ],

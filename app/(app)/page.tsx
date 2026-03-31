@@ -6,15 +6,32 @@ import { USER } from "@/features/portfolio/profile/data/user";
 import { cn } from "@/lib/utils";
 import dayjs from "dayjs";
 import { ProfilePage as PageSchema, WithContext } from "schema-dts";
-import SectionSkeleton from "@/components/skeleton";
 import Hero from "@/features/portfolio/hero/hero";
+import SocialLinksSkeleton from "@/features/portfolio/socials/socialSkeleton";
+import CareerSkeleton from "@/features/portfolio/career-path/components/careerSkeleton";
+import SkillsSkeleton from "@/features/portfolio/techstack/components/skillsSkeleton";
+import OpenSourceSkeleton from "@/features/portfolio/open-source/components/ossSkeleton";
+import ProjectsSkeleton from "@/features/portfolio/projects/components/projectsSkeleton";
+import BlogsSkeleton from "@/features/portfolio/blogs/components/blogSkeleton";
+import FooterSkeleton from "@/features/footer/components/footerSkeleton";
+
+const SocialLinks = dynamic(
+  () => import("@/features/portfolio/socials/SocialLinks"),
+  {
+    loading: () => (
+      <ContentWrapper>
+        <SocialLinksSkeleton />
+      </ContentWrapper>
+    ),
+  },
+);
 
 const Career = dynamic(
   () => import("@/features/portfolio/career-path/components/career"),
   {
     loading: () => (
       <ContentWrapper>
-        <SectionSkeleton />
+        <CareerSkeleton />
       </ContentWrapper>
     ),
   },
@@ -28,18 +45,7 @@ const Skills = dynamic(
   {
     loading: () => (
       <ContentWrapper>
-        <SectionSkeleton />
-      </ContentWrapper>
-    ),
-  },
-);
-
-const SocialLinks = dynamic(
-  () => import("@/features/portfolio/socials/SocialLinks"),
-  {
-    loading: () => (
-      <ContentWrapper>
-        <SectionSkeleton />
+        <SkillsSkeleton />
       </ContentWrapper>
     ),
   },
@@ -50,7 +56,7 @@ const OpenSource = dynamic(
   {
     loading: () => (
       <ContentWrapper>
-        <SectionSkeleton />
+        <OpenSourceSkeleton />
       </ContentWrapper>
     ),
   },
@@ -61,7 +67,7 @@ const Projects = dynamic(
   {
     loading: () => (
       <ContentWrapper>
-        <SectionSkeleton />
+        <ProjectsSkeleton />
       </ContentWrapper>
     ),
   },
@@ -72,7 +78,7 @@ const Blogs = dynamic(
   {
     loading: () => (
       <ContentWrapper>
-        <SectionSkeleton />
+        <BlogsSkeleton />
       </ContentWrapper>
     ),
   },
@@ -81,7 +87,7 @@ const Blogs = dynamic(
 const Footer = dynamic(() => import("@/features/footer/components/footer"), {
   loading: () => (
     <ContentWrapper>
-      <SectionSkeleton />
+      <FooterSkeleton />
     </ContentWrapper>
   ),
 });
@@ -146,10 +152,6 @@ export default function Page() {
           </ContentWrapper>
         </div>
       </div>
-
-      {/* <Awards /> */}
-
-      {/* <Certifications /> */}
     </>
   );
 }

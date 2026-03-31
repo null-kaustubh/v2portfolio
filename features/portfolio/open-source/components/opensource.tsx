@@ -14,9 +14,10 @@ import {
 import { useState } from "react";
 
 export default function OpenSource() {
-  const contributions = mockContributions.sort((a, b) =>
-    a.status === "merged" && b.status !== "merged" ? -1 : 1,
-  );
+  const contributions = [...mockContributions].sort((a, b) => {
+    const order = { merged: 0, open: 1, closed: 2 };
+    return order[a.status] - order[b.status];
+  });
 
   const hasContributions = contributions.length > 0;
   const [expanded, setExpanded] = useState(false);
@@ -47,22 +48,44 @@ export default function OpenSource() {
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <div className="relative w-4 h-4 mt-0.5 sm:mt-0 shrink-0">
-                          <Image
-                            src={
-                              c.status === "merged"
-                                ? "https://assets.kaustubh.cloud/images/github-merged.svg"
-                                : "https://assets.kaustubh.cloud/images/github-pr.svg"
-                            }
-                            alt={c.status}
-                            fill
-                            unoptimized
-                            className="object-contain"
-                            draggable={false}
-                          />
+                          {c.status === "merged" && (
+                            <Image
+                              src="https://assets.kaustubh.cloud/images/github-merged.svg"
+                              alt="merged"
+                              fill
+                              unoptimized
+                              className="object-contain"
+                              draggable={false}
+                            />
+                          )}
+                          {c.status === "open" && (
+                            <Image
+                              src="https://assets.kaustubh.cloud/images/github-pr.svg"
+                              alt="open"
+                              fill
+                              unoptimized
+                              className="object-contain"
+                              draggable={false}
+                            />
+                          )}
+                          {c.status === "closed" && (
+                            <Image
+                              src="https://assets.kaustubh.cloud/images/github-closed.svg"
+                              alt="closed"
+                              fill
+                              unoptimized
+                              className="object-contain"
+                              draggable={false}
+                            />
+                          )}
                         </div>
                       </TooltipTrigger>
                       <TooltipContent side="left">
-                        {c.status === "merged" ? "Merged" : "Open"}
+                        {c.status === "merged"
+                          ? "Merged"
+                          : c.status === "closed"
+                            ? "Closed"
+                            : "Open"}
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>

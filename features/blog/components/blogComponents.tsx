@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
-
-import { CodeCopyButton } from "./codeCopyButton";
+import { cn } from "@/lib/utils";
 
 export const BlogComponents = {
   // Override default image component
@@ -26,13 +25,18 @@ export const BlogComponents = {
   // Custom heading with better styling
   h1: ({
     children,
+    className,
     ...props
   }: {
     children: React.ReactNode;
+    className?: string;
     [key: string]: unknown;
   }) => (
     <h1
-      className="mb-4 text-3xl font-bold leading-tight sm:text-4xl lg:mb-6 lg:text-5xl"
+      className={cn(
+        "mb-4 text-3xl font-bold leading-tight sm:text-4xl lg:mb-6 lg:text-5xl",
+        className,
+      )}
       {...props}
     >
       {children}
@@ -40,13 +44,18 @@ export const BlogComponents = {
   ),
   h2: ({
     children,
+    className,
     ...props
   }: {
     children: React.ReactNode;
+    className?: string;
     [key: string]: unknown;
   }) => (
     <h2
-      className="mt-6 mb-4 first:mt-2 text-2xl font-semibold text-primary-foreground sm:text-3xl"
+      className={cn(
+        "mt-6 mb-4 first:mt-2 text-2xl font-semibold text-primary-foreground sm:text-3xl",
+        className,
+      )}
       {...props}
     >
       {children}
@@ -54,25 +63,35 @@ export const BlogComponents = {
   ),
   h3: ({
     children,
+    className,
     ...props
   }: {
     children: React.ReactNode;
+    className?: string;
     [key: string]: unknown;
   }) => (
-    <h3 className="mt-4 mb-2 text-xl font-medium sm:text-2xl" {...props}>
+    <h3
+      className={cn("mt-4 mb-2 text-xl font-medium sm:text-2xl", className)}
+      {...props}
+    >
       {children}
     </h3>
   ),
   // Custom paragraph styling
   p: ({
     children,
+    className,
     ...props
   }: {
     children: React.ReactNode;
+    className?: string;
     [key: string]: unknown;
   }) => (
     <p
-      className="mb-4 text-base leading-7 text-secondary-foreground sm:text-lg sm:leading-8"
+      className={cn(
+        "mb-4 text-base leading-7 text-secondary-foreground sm:text-lg sm:leading-8",
+        className,
+      )}
       {...props}
     >
       {children}
@@ -82,17 +101,22 @@ export const BlogComponents = {
   a: ({
     href,
     children,
+    className,
     ...props
   }: {
     href?: string;
     children: React.ReactNode;
+    className?: string;
     [key: string]: unknown;
   }) => (
     <a
       href={href}
       target={href?.startsWith("http") ? "_blank" : undefined}
       rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
-      className="font-medium text-primary-foreground underline underline-offset-4 hover:text-primary-foreground/80 transition-colors"
+      className={cn(
+        "font-medium text-primary-foreground underline underline-offset-4 hover:text-primary-foreground/80 transition-colors",
+        className,
+      )}
       {...props}
     >
       {children}
@@ -101,25 +125,32 @@ export const BlogComponents = {
   // Custom italic text styling
   em: ({
     children,
+    className,
     ...props
   }: {
     children: React.ReactNode;
+    className?: string;
     [key: string]: unknown;
   }) => (
-    <em className="italic text-primary-foreground" {...props}>
+    <em className={cn("italic text-primary-foreground", className)} {...props}>
       {children}
     </em>
   ),
   // Custom list styling
   ul: ({
     children,
+    className,
     ...props
   }: {
     children: React.ReactNode;
+    className?: string;
     [key: string]: unknown;
   }) => (
     <ul
-      className="mb-4 ml-5 list-disc space-y-2 sm:ml-6 sm:space-y-2.5"
+      className={cn(
+        "mb-4 ml-5 list-disc space-y-2 sm:ml-6 sm:space-y-2.5",
+        className,
+      )}
       {...props}
     >
       {children}
@@ -127,13 +158,18 @@ export const BlogComponents = {
   ),
   ol: ({
     children,
+    className,
     ...props
   }: {
     children: React.ReactNode;
+    className?: string;
     [key: string]: unknown;
   }) => (
     <ol
-      className="mb-4 ml-5 list-decimal space-y-2 sm:ml-6 sm:space-y-2.5"
+      className={cn(
+        "mb-4 ml-5 list-decimal space-y-2 sm:ml-6 sm:space-y-2.5",
+        className,
+      )}
       {...props}
     >
       {children}
@@ -141,13 +177,18 @@ export const BlogComponents = {
   ),
   li: ({
     children,
+    className,
     ...props
   }: {
     children: React.ReactNode;
+    className?: string;
     [key: string]: unknown;
   }) => (
     <li
-      className="leading-7 text-secondary-foreground sm:text-lg sm:leading-8"
+      className={cn(
+        "leading-7 text-secondary-foreground sm:text-lg sm:leading-8",
+        className,
+      )}
       {...props}
     >
       {children}
@@ -155,44 +196,27 @@ export const BlogComponents = {
   ),
   pre: ({
     children,
+    className,
     ...props
   }: {
     children: React.ReactNode;
+    className?: string;
     [key: string]: unknown;
   }) => {
-    const getTextContent = (node: React.ReactNode): string => {
-      if (typeof node === "string") {
-        return node;
-      }
-      if (typeof node === "number") {
-        return String(node);
-      }
-      if (
-        React.isValidElement(node) &&
-        node.props &&
-        typeof node.props === "object"
-      ) {
-        return getTextContent(
-          (node.props as { children?: React.ReactNode }).children,
-        );
-      }
-      if (Array.isArray(node)) {
-        return node.map(getTextContent).join("");
-      }
-      return "";
-    };
-
-    const codeText = getTextContent(children);
-
     return (
-      <div className="group relative my-4 sm:my-6">
+      <div className="not-prose group relative my-4 sm:my-6">
         <pre
-          className="overflow-x-auto rounded-lg border bg-secondary-foreground/30 p-3 text-xs sm:p-4 sm:text-sm [&>code]:bg-transparent [&>code]:p-0"
+          className={cn(
+            "overflow-x-auto rounded-lg py-3 pr-10 pl-3 text-xs sm:text-sm font-code",
+            className,
+          )}
           {...props}
         >
-          {children}
+          {/* Reset any code styling Shiki applies */}
+          <div className="[&>code]:rounded-none [&>code]:p-0 [&>code]:bg-transparent">
+            {children}
+          </div>
         </pre>
-        <CodeCopyButton code={codeText} />
       </div>
     );
   },
@@ -207,7 +231,9 @@ export const BlogComponents = {
     [key: string]: unknown;
   }) => {
     // If it's part of a pre block (syntax highlighted), don't apply inline styling
-    if (className?.includes("language-")) {
+    const isBlock =
+      className?.includes("shiki") || typeof children === "object";
+    if (isBlock) {
       return (
         <code className={className} {...props}>
           {children}
@@ -217,24 +243,31 @@ export const BlogComponents = {
 
     // Inline code styling
     return (
-      <code
-        className="rounded px-1.5 py-0.5 font-mono text-xs sm:px-2 sm:py-1 sm:text-sm"
-        {...props}
-      >
-        {children}
-      </code>
+      <span className="bg-muted rounded-sm">
+        <code
+          className="px-1.5 py-0.5 font-mono text-xs sm:px-2 sm:py-1 sm:text-sm"
+          {...props}
+        >
+          {children}
+        </code>
+      </span>
     );
   },
   // Custom blockquote styling
   blockquote: ({
     children,
+    className,
     ...props
   }: {
     children: React.ReactNode;
+    className?: string;
     [key: string]: unknown;
   }) => (
     <blockquote
-      className="not-prose relative my-6 border-l-4 border-border pl-4 text-lg leading-relaxed italic text-primary-foreground sm:pl-5 sm:text-xl"
+      className={cn(
+        "not-prose relative my-6 border-l-4 border-border pl-4 text-lg leading-relaxed italic text-primary-foreground sm:pl-5 sm:text-xl",
+        className,
+      )}
       {...props}
     >
       {children}

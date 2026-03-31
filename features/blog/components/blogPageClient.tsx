@@ -48,6 +48,7 @@ export default function BlogPageClient({ blogs }: Props) {
         <button
           onClick={() => router.push("/")}
           className="flex items-center gap-2 text-xs sm:text-sm font-mono text-secondary-foreground transition-opacity hover:opacity-70 cursor-pointer"
+          name="back to home"
         >
           <ArrowLeft size={16} />
           <p className="sm:hidden block">home</p>

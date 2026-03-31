@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 import { projects } from "@/features/portfolio/projects/data/projects";
 import { SITE_INFO } from "@/config/site";
+import ProjectPageSsr from "@/features/project/components/projectPage";
+import Footer from "@/features/footer/components/footer";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -38,7 +40,8 @@ export default function ProjectsPage() {
 
         <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-0 md:max-w-4xl lg:max-w-4xl">
           <ContentWrapper>
-            <div>Hello</div>
+            <ProjectPageSsr />
+            <Footer />
           </ContentWrapper>
         </div>
       </div>

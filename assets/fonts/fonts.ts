@@ -12,6 +12,18 @@ export const departureMono = localFont({
   display: "swap",
 });
 
+export const fragmentMono = localFont({
+  src: [
+    {
+      path: "./FragmentMono-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-fragment-mono",
+  display: "swap",
+});
+
 export const sfProDisplay = localFont({
   src: [
     {

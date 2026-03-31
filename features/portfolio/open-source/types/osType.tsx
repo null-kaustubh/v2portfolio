@@ -4,6 +4,6 @@ export type Contribution = {
   title: string;
   url: string;
   prId: number;
-  status: "merged" | "open";
+  status: "merged" | "open" | "closed";
   type: "PR" | "MR";
 };
