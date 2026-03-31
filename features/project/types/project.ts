@@ -42,11 +42,6 @@ export type GithubStats = {
   license?: string | null;
 };
 
-export type GithubLanguage = {
-  name: string;
-  percentage: string;
-};
-
 export type Project = {
   /** Parsed frontmatter metadata from the MDX file. */
   metadata: ProjectMetadata;
@@ -57,7 +52,6 @@ export type Project = {
 
   github?: {
     stats?: GithubStats;
-    languages?: GithubLanguage[];
   };
 };
 

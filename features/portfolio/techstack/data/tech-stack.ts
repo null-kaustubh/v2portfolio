@@ -72,6 +72,13 @@ export const TECH_STACK: TechStackType[] = [
     group: "database",
   },
   {
+    key: "go",
+    title: "Go",
+    categories: ["Language"],
+    themed: false,
+    group: "language",
+  },
+  {
     key: "kafka",
     title: "Kafka",
     categories: ["Message Queue", "Open Source Platform"],

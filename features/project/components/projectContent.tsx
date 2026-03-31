@@ -10,7 +10,6 @@ import { calculateReadingTime } from "@/lib/readTime";
 import { Toolbar } from "@/features/blog/components/Toolbar";
 import { Project } from "@/features/project/types/project";
 import { statusStyles } from "@/features/portfolio/projects/components/ProjectItem";
-import RepoStats from "./repoStats";
 
 type ProjectContentProps = {
   project: Project;
@@ -59,7 +58,11 @@ export default function ProjectContent({ project }: ProjectContentProps) {
                   {project.metadata.description}
                 </p>
 
-                <div className="text-secondary-foreground flex justify-between items-center text-sm px-4 py-2">
+                <div className="text-secondary-foreground text-xs sm:text-sm px-4 py-2 font-code flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                  <span className="whitespace-nowrap">Built with:</span>
+                  <span>[{project.metadata.tech.join(" · ")}]</span>
+                </div>
+                <div className="text-secondary-foreground flex justify-between items-center text-sm px-4 py-2 screen-line-before">
                   <div className="flex flex-col sm:flex-row sm:items-center items-start sm:gap-4 gap-1">
                     <div className="flex items-center justify-center gap-1.5">
                       <Calendar size={16} />
@@ -81,12 +84,103 @@ export default function ProjectContent({ project }: ProjectContentProps) {
                     {readingTime}m
                   </div>
                 </div>
-                <div className="text-secondary-foreground flex items-center text-sm px-4 py-2 screen-line-before">
-                  <div>{project.github?.stats?.forks}</div>
-                  <div>{project.github?.stats?.stars}</div>
-                  <div>{project.github?.stats?.issues}</div>
-                  <div>{project.github?.stats?.watchers}</div>
-                  <div>{project.github?.stats?.license}</div>
+                <div className="flex items-center justify-between screen-line-before">
+                  <div className="px-4">
+                    {project.metadata.githubUrl && (
+                      <a
+                        href={project.metadata.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-selection transition-colors"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M10 14.9993C9.34732 15.6987 8.98919 16.6227 9 17.5793V20.9993M14 14.9993C14.6527 15.6987 15.0108 16.6227 15 17.5793V20.9993M9 19.0493C8.10549 19.4055 7.13532 19.5294 6.18 19.4093C4.66 18.8893 5.06 17.5093 4.28 16.9393C3.90518 16.6713 3.46037 16.5184 3 16.4993M19 9.74927C19 12.7493 17.05 14.9993 12 14.9993C6.95 14.9993 5 12.7493 5 9.74927C4.9753 8.70844 5.20893 7.67772 5.68 6.74927C5.34 5.27927 5.47 3.46927 6.2 3.10927C6.93 2.74927 8.47 3.40927 9.74 4.25927C10.486 4.12615 11.2422 4.05922 12 4.05927C12.7572 4.05262 13.5134 4.11285 14.26 4.23927C15.53 3.38927 17.14 2.75927 17.8 3.08927C18.46 3.41927 18.66 5.25927 18.32 6.72927C18.7943 7.66371 19.028 8.70171 19 9.74927Z"
+                            stroke="currentcolor"
+                            strokeWidth={1.5}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </a>
+                    )}
+                    {project.metadata.liveUrl && (
+                      <a
+                        href={project.metadata.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-selection transition-colors"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M14.1213 9.87874L9.87868 14.1214M10.5858 6.3432L11.2929 5.6361C13.2455 3.68348 16.4113 3.68348 18.364 5.6361C20.3166 7.58872 20.3166 10.7545 18.364 12.7072L17.6569 13.4143M6.34314 10.5858L5.63604 11.293C3.68341 13.2456 3.68341 16.4114 5.63604 18.364C7.58866 20.3166 10.7545 20.3166 12.7071 18.364L13.4142 17.6569"
+                            stroke="currentcolor"
+                            strokeWidth={1.5}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </a>
+                    )}
+                  </div>
+                  <div className="text-secondary-foreground flex items-center gap-3 text-sm px-4 py-2">
+                    <div className="flex items-center gap-1">
+                      <svg
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="shrink-0 h-4 text-accent w-4"
+                        fill="currentColor"
+                      >
+                        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path>
+                      </svg>
+                      {project.github?.stats?.stars}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <svg
+                        viewBox="0 0 32 32"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="shrink-0 h-4 text-accent w-4"
+                        fill="currentColor"
+                      >
+                        <path d="M19,2v6h2v5c0,1.103-0.897,2-2,2h-3c-0.732,0-1.409,0.212-2,0.556V8h2V2h-6v6h2v11v5h-2v6  h6v-6h-2v-5c0-1.103,0.897-2,2-2h3c2.206,0,4-1.794,4-4V8h2V2H19z M12,4h2v2h-2V4z M14,28h-2v-2h2V28z M23,6h-2V4h2V6z"></path>
+                      </svg>
+                      {project.github?.stats?.forks}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <svg
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="shrink-0 h-4 text-accent w-4"
+                        fill="currentColor"
+                      >
+                        <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-.001 5.75c.69 0 1.251.56 1.251 1.25s-.561 1.25-1.251 1.25-1.249-.56-1.249-1.25.559-1.25 1.249-1.25zm2.001 12.25h-4v-1c.484-.179 1-.201 1-.735v-4.467c0-.534-.516-.618-1-.797v-1h3v6.265c0 .535.517.558 1 .735v.999z"></path>
+                      </svg>
+                      {project.github?.stats?.issues}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <svg
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="shrink-0 h-4 text-accent w-4"
+                        fill="currentColor"
+                      >
+                        <path d="M12 9a3 3 0 0 0-3 3c0 1.642 1.358 3 3 3 1.641 0 3-1.358 3-3 0-1.642-1.359-3-3-3zm0 5c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm0-14C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22c-5.515 0-10-4.485-10-10S6.485 2 12 2s10 4.485 10 10-4.485 10-10 10z"></path>
+                      </svg>
+                      {project.github?.stats?.watchers}
+                    </div>
+                  </div>
                 </div>
               </div>
             </PanelContent>

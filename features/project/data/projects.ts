@@ -67,10 +67,9 @@ export async function getProjectBySlug(slug: string) {
 
   if (!project) return null;
 
-  const [readme, stats, languages] = await Promise.all([
+  const [readme, stats] = await Promise.all([
     fetchGithubReadme(project.metadata.githubUrl),
     fetchGithubRepoStats(project.metadata.githubUrl),
-    fetchGithubLanguages(project.metadata.githubUrl),
   ]);
 
   let content = project.content;
@@ -94,7 +93,6 @@ export async function getProjectBySlug(slug: string) {
             license: stats.license,
           }
         : undefined,
-      languages,
     },
   };
 }
@@ -165,27 +163,4 @@ export async function fetchGithubRepoStats(
     license: data.license?.spdx_id ?? null,
     defaultBranch: data.default_branch,
   };
-}
-
-export async function fetchGithubLanguages(repoUrl: string) {
-  const match = repoUrl.match(/github\.com\/([^/]+)\/([^/]+)/);
-  if (!match) return null;
-
-  const [, owner, repo] = match;
-
-  const res = await fetch(
-    `https://api.github.com/repos/${owner}/${repo}/languages`,
-    { next: { revalidate: 3600 } },
-  );
-
-  if (!res.ok) return null;
-
-  const data = await res.json();
-
-  const total = Object.values(data).reduce((a: number, b: any) => a + b, 0);
-
-  return Object.entries(data).map(([lang, bytes]: any) => ({
-    name: lang,
-    percentage: ((bytes / total) * 100).toFixed(1),
-  }));
 }
