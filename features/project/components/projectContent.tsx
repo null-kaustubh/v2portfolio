@@ -61,6 +61,7 @@ export default function ProjectContent({ project }: ProjectContentProps) {
                 <div className="text-secondary-foreground text-xs sm:text-sm px-4 py-2 font-code flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
                   <span className="whitespace-nowrap">Built with:</span>
                   <span>[{project.metadata.tech.join(" · ")}]</span>
+                  <span className="whitespace-nowrap">and ❤︎</span>
                 </div>
                 <div className="text-secondary-foreground flex justify-between items-center text-sm px-4 py-2 screen-line-before">
                   <div className="flex flex-col sm:flex-row sm:items-center items-start sm:gap-4 gap-1">
