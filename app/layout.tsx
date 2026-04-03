@@ -11,6 +11,7 @@ import { cookies } from "next/headers";
 import clsx from "clsx";
 import ThemeProvider, { Theme } from "@/context/ThemeProvider";
 import TopBar from "@/features/topbar/topbar";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_INFO.url),
@@ -89,6 +90,7 @@ export default async function RootLayout({
         <ThemeProvider initialTheme={theme}>
           <TopBar />
           {children}
+          <Analytics />
         </ThemeProvider>
         <div className="pointer-events-none fixed bottom-0 left-0 right-0 px-4 sm:px-6 md:px-0 z-20">
           <div className="mx-auto md:max-w-4xl lg:max-w-4xl h-10 blur-gradient-bottom" />

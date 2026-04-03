@@ -7,9 +7,10 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getAllBlogs, getBlogBySlug } from "@/features/blog/data/blogs";
 import { Blog } from "@/features/blog/types/blog";
-// import { getTableOfContents } from "-core/content/toc";
 import BlogContent from "@/features/blog/components/blogContent";
 import Footer from "@/features/footer/components/footer";
+import { getTableOfContents } from "@/lib/toc";
+import TableOfContents from "@/features/blog/components/tableOfContents";
 
 export const dynamic = "force-static";
 
@@ -76,7 +77,7 @@ export default async function BlogPage({ params }: PageProps) {
     notFound();
   }
 
-  // const toc = getTableOfContents(blog.content);
+  const toc = getTableOfContents(blog.content);
   const jsonLd = getBlogPageJsonLd(blog);
 
   return (
@@ -101,6 +102,7 @@ export default async function BlogPage({ params }: PageProps) {
 
         <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-0 md:max-w-4xl lg:max-w-4xl">
           <ContentWrapper>
+            <TableOfContents items={toc} />
             <BlogContent blog={blog} />
             <Footer />
           </ContentWrapper>

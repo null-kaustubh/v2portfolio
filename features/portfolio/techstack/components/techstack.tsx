@@ -96,6 +96,7 @@ export function TechStack({ sorted, skills, groupedSkills }: TechStackProps) {
                                   tech.themed && "dark-icon-hidden",
                                 )}
                                 draggable={false}
+                                loading="lazy"
                               />
 
                               {/* Dark-mode icon (only if it exists) */}
@@ -107,6 +108,7 @@ export function TechStack({ sorted, skills, groupedSkills }: TechStackProps) {
                                   unoptimized
                                   className="object-contain dark-icon-visible"
                                   draggable={false}
+                                  loading="lazy"
                                 />
                               )}
 
@@ -154,6 +156,7 @@ export function TechStack({ sorted, skills, groupedSkills }: TechStackProps) {
                                 tech.themed && "dark-icon-hidden",
                               )}
                               draggable={false}
+                              loading="lazy"
                             />
 
                             {/* Dark-mode icon (only if it exists) */}
@@ -163,6 +166,7 @@ export function TechStack({ sorted, skills, groupedSkills }: TechStackProps) {
                                 alt={tech.title}
                                 fill
                                 unoptimized
+                                loading="lazy"
                                 className="object-contain dark-icon-visible"
                                 draggable={false}
                               />

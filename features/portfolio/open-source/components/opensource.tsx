@@ -56,6 +56,7 @@ export default function OpenSource() {
                               unoptimized
                               className="object-contain"
                               draggable={false}
+                              loading="lazy"
                             />
                           )}
                           {c.status === "open" && (
@@ -66,6 +67,7 @@ export default function OpenSource() {
                               unoptimized
                               className="object-contain"
                               draggable={false}
+                              loading="lazy"
                             />
                           )}
                           {c.status === "closed" && (
@@ -76,6 +78,7 @@ export default function OpenSource() {
                               unoptimized
                               className="object-contain"
                               draggable={false}
+                              loading="lazy"
                             />
                           )}
                         </div>

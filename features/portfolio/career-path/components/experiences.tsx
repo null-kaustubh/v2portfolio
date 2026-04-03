@@ -31,6 +31,7 @@ export function ExperienceRow({ item, isOpen, onHoverAction }: Props) {
             height={40}
             className="object-cover select-none"
             draggable={false}
+            loading="lazy"
           />
         </div>
 

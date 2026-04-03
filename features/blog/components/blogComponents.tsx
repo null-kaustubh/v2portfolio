@@ -18,6 +18,7 @@ export const BlogComponents = {
       alt={alt}
       width={800}
       height={400}
+      loading="lazy"
       className="rounded-lg ring-1 ring-secondary-foreground/20"
       {...props}
     />
@@ -50,17 +51,23 @@ export const BlogComponents = {
     children: React.ReactNode;
     className?: string;
     [key: string]: unknown;
-  }) => (
-    <h2
-      className={cn(
-        "mt-6 mb-4 first:mt-2 text-2xl font-semibold text-primary-foreground sm:text-3xl",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </h2>
-  ),
+  }) => {
+    const text = String(children);
+    const id = slugify(text);
+
+    return (
+      <h2
+        id={id}
+        className={cn(
+          "mt-6 mb-4 first:mt-2 text-2xl font-semibold text-primary-foreground sm:text-3xl",
+          className,
+        )}
+        {...props}
+      >
+        {children}
+      </h2>
+    );
+  },
   h3: ({
     children,
     className,
@@ -69,14 +76,20 @@ export const BlogComponents = {
     children: React.ReactNode;
     className?: string;
     [key: string]: unknown;
-  }) => (
-    <h3
-      className={cn("mt-4 mb-2 text-xl font-medium sm:text-2xl", className)}
-      {...props}
-    >
-      {children}
-    </h3>
-  ),
+  }) => {
+    const text = String(children);
+    const id = slugify(text);
+
+    return (
+      <h3
+        id={id}
+        className={cn("mt-4 mb-2 text-xl font-medium sm:text-2xl", className)}
+        {...props}
+      >
+        {children}
+      </h3>
+    );
+  },
   // Custom paragraph styling
   p: ({
     children,
@@ -274,3 +287,10 @@ export const BlogComponents = {
     </blockquote>
   ),
 };
+
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .replace(/[^\w]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
