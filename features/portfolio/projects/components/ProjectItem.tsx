@@ -27,6 +27,7 @@ export default function ProjectItemPortfolio({ project }: ProjectItemProps) {
             sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover"
             draggable={false}
+            loading="lazy"
           />
         </div>
 

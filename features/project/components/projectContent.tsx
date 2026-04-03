@@ -32,7 +32,7 @@ export default function ProjectContent({ project }: ProjectContentProps) {
                   alt={project.metadata.title}
                   width={1200}
                   height={630}
-                  priority
+                  loading="lazy"
                   className="w-full h-auto object-contain"
                 />
               </div>

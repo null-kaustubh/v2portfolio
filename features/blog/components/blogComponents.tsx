@@ -18,6 +18,7 @@ export const BlogComponents = {
       alt={alt}
       width={800}
       height={400}
+      loading="lazy"
       className="rounded-lg ring-1 ring-secondary-foreground/20"
       {...props}
     />

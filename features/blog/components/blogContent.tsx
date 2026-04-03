@@ -1,4 +1,3 @@
-// import { Panel, PanelContent, PanelHeader, PanelTitle } from "@/features/panel";
 import { formatFullDate } from "@/lib/formatDate";
 import { Blog } from "../types/blog";
 import Image from "next/image";
@@ -31,7 +30,7 @@ export default function BlogContent({ blog }: BlogContentProps) {
                   alt={blog.metadata.title}
                   width={1200}
                   height={630}
-                  priority
+                  loading="lazy"
                   className="w-full h-auto object-contain"
                 />
               </div>

@@ -25,6 +25,7 @@ export default function BlogItemExpanded({ blog, className }: Props) {
             width={1200}
             height={630}
             className="h-auto w-full object-contain border-b border-border"
+            loading="lazy"
           />
         )}
 
