@@ -10,7 +10,7 @@ export const Experience: ExperienceList = [
     from: "2021-11",
     to: "2025-06",
     description: [
-      "Studied CS fundamentals with a strong focus on web development and real-world projects.",
+      "Built a strong foundation in computer science and data structures while developing multiple full-stack projects focused on real-world problem solving.",
     ],
   },
   {
@@ -22,8 +22,7 @@ export const Experience: ExperienceList = [
     from: "2024-08",
     to: "2024-12",
     description: [
-      "Automated workflows with Salesforce Flows, built reports and dashboards.",
-      "supported a production go-live, and worked with Apex and Salesforce administration.",
+      "Automated business workflows and built dashboards using Salesforce, contributing to a production go-live while working with Apex and platform tools.",
     ],
   },
   {
@@ -35,8 +34,7 @@ export const Experience: ExperienceList = [
     from: "2024-07",
     to: "2026-02",
     description: [
-      "Built and delivered client-facing web applications with modern stacks, focused on SEO improvements, performance optimization, codebase refactoring.",
-      "ongoing Wix and WordPress maintenance.",
+      "Built and optimized full-stack applications for clients, driving performance, SEO improvements, and scalable architecture across modern web stacks.",
     ],
   },
   {
@@ -48,7 +46,7 @@ export const Experience: ExperienceList = [
     from: "2025-09",
     to: null,
     description: [
-      "Working on enterprise backend systems using core Java and large-scale legacy codebases.",
+      "Shipping production-grade backend features for Swiss airline LX’s cargo platform, debugging complex enterprise systems and ensuring stable, high-quality releases.",
     ],
   },
 ];
