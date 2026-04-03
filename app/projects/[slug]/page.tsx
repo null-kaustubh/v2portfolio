@@ -16,6 +16,8 @@ import {
   getProjectBySlug,
 } from "@/features/project/data/projects";
 
+export const dynamic = "force-static";
+
 type PageProps = {
   params: Promise<{
     slug: string;
