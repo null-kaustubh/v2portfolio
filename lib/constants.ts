@@ -1,0 +1,7 @@
+export const ASSETS_REPO = "https://assets.kaustubh.cloud";
+
+export function resolveImage(src?: string) {
+  if (!src) return "";
+
+  return src.startsWith("http") ? src : `${ASSETS_REPO}${src}`;
+}

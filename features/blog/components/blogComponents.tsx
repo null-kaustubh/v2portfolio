@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { cn } from "@/lib/utils";
+import { resolveImage } from "@/lib/constants";
 
 export const BlogComponents = {
   // Override default image component
@@ -12,17 +13,21 @@ export const BlogComponents = {
     src: string;
     alt: string;
     [key: string]: unknown;
-  }) => (
-    <Image
-      src={src}
-      alt={alt}
-      width={800}
-      height={400}
-      loading="lazy"
-      className="rounded-lg ring-1 ring-secondary-foreground/20"
-      {...props}
-    />
-  ),
+  }) => {
+    const resolvedSrc = typeof src === "string" ? resolveImage(src) : "";
+
+    return (
+      <Image
+        src={resolvedSrc}
+        alt={alt}
+        width={800}
+        height={400}
+        loading="lazy"
+        className="rounded-lg ring-1 ring-secondary-foreground/20"
+        {...props}
+      />
+    );
+  },
   // Custom heading with better styling
   h1: ({
     children,

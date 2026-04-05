@@ -6,6 +6,7 @@ import { GROUP_LABEL } from "../config";
 import { LayoutGroup, motion } from "motion/react";
 import { TechStackProps } from "../types/tech-stack";
 import { Fragment } from "react/jsx-runtime";
+import { ASSETS_REPO } from "@/lib/constants";
 
 export function TechStack({ sorted, skills, groupedSkills }: TechStackProps) {
   return (
@@ -87,7 +88,7 @@ export function TechStack({ sorted, skills, groupedSkills }: TechStackProps) {
                             <div className="relative h-4 w-4 shrink-0">
                               {/* Default (light-mode) icon */}
                               <Image
-                                src={`https://assets.kaustubh.cloud/tech-stack-icons/${tech.key}.svg`}
+                                src={`${ASSETS_REPO}/tech-stack-icons/${tech.key}.svg`}
                                 alt={tech.title}
                                 fill
                                 unoptimized
@@ -102,7 +103,7 @@ export function TechStack({ sorted, skills, groupedSkills }: TechStackProps) {
                               {/* Dark-mode icon (only if it exists) */}
                               {tech.themed && (
                                 <Image
-                                  src={`https://assets.kaustubh.cloud/tech-stack-icons/${tech.key}-dark.svg`}
+                                  src={`${ASSETS_REPO}/tech-stack-icons/${tech.key}-dark.svg`}
                                   alt={tech.title}
                                   fill
                                   unoptimized
@@ -147,7 +148,7 @@ export function TechStack({ sorted, skills, groupedSkills }: TechStackProps) {
                           <div className="relative h-4 w-4 shrink-0">
                             {/* Default (light-mode) icon */}
                             <Image
-                              src={`https://assets.kaustubh.cloud/tech-stack-icons/${tech.key}.svg`}
+                              src={`${ASSETS_REPO}/tech-stack-icons/${tech.key}.svg`}
                               alt={tech.title}
                               fill
                               unoptimized
@@ -162,7 +163,7 @@ export function TechStack({ sorted, skills, groupedSkills }: TechStackProps) {
                             {/* Dark-mode icon (only if it exists) */}
                             {tech.themed && (
                               <Image
-                                src={`https://assets.kaustubh.cloud/tech-stack-icons/${tech.key}-dark.svg`}
+                                src={`${ASSETS_REPO}/tech-stack-icons/${tech.key}-dark.svg`}
                                 alt={tech.title}
                                 fill
                                 unoptimized

@@ -113,7 +113,7 @@ export default function BlogPageClient({ blogs }: Props) {
                   blog={blog}
                   className={cn(
                     "screen-line-before-elevated",
-                    "screen-line-after",
+                    "not-even:screen-line-after",
                   )}
                 />
               );

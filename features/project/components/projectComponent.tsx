@@ -3,6 +3,7 @@ import type { ProjectPreview } from "../types/project";
 import Link from "next/link";
 import { formatFullDate } from "@/lib/formatDate";
 import { cn } from "@/lib/utils";
+import { resolveImage } from "@/lib/constants";
 
 type Props = {
   project: ProjectPreview;
@@ -19,7 +20,7 @@ export default function ProjectItem({ project, className }: Props) {
       <div className="relative overflow-hidden bg-muted">
         {project.image && (
           <Image
-            src={project.image}
+            src={resolveImage(project.image)}
             alt={project.title}
             width={1200}
             height={630}

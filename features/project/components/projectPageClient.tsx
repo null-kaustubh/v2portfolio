@@ -41,7 +41,7 @@ export default function ProjectPageClient({ projects }: Props) {
                 project={project}
                 className={cn(
                   "screen-line-before-elevated",
-                  "screen-line-after",
+                  "not-even:screen-line-after",
                 )}
               />
             );
