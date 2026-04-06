@@ -4,6 +4,7 @@ import Link from "next/link";
 import { formatFullDate } from "@/lib/formatDate";
 import { Pin } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { resolveImage } from "@/lib/constants";
 
 type Props = {
   blog: BlogPreview;
@@ -20,7 +21,7 @@ export default function BlogItemExpanded({ blog, className }: Props) {
       <div className="relative overflow-hidden bg-muted">
         {blog.image && (
           <Image
-            src={blog.image}
+            src={resolveImage(blog.image)}
             alt={blog.title}
             width={1200}
             height={630}

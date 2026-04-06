@@ -10,6 +10,7 @@ import { calculateReadingTime } from "@/lib/readTime";
 import { Toolbar } from "@/features/blog/components/Toolbar";
 import { Project } from "@/features/project/types/project";
 import { statusStyles } from "@/features/portfolio/projects/components/ProjectItem";
+import { resolveImage } from "@/lib/constants";
 
 type ProjectContentProps = {
   project: Project;
@@ -28,7 +29,7 @@ export default function ProjectContent({ project }: ProjectContentProps) {
             <div className="p-px sm:p-4">
               <div className="relative overflow-hidden rounded-xl ring-0 ring-secondary-foreground/20 sm:ring-1">
                 <Image
-                  src={project.metadata.image}
+                  src={resolveImage(project.metadata.image)}
                   alt={project.metadata.title}
                   width={1200}
                   height={630}

@@ -12,6 +12,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useState } from "react";
+import { ASSETS_REPO } from "@/lib/constants";
 
 export default function OpenSource() {
   const contributions = [...mockContributions].sort((a, b) => {
@@ -50,7 +51,7 @@ export default function OpenSource() {
                         <div className="relative w-4 h-4 mt-0.5 sm:mt-0 shrink-0">
                           {c.status === "merged" && (
                             <Image
-                              src="https://assets.kaustubh.cloud/images/github-merged.svg"
+                              src={`${ASSETS_REPO}/images/github-merged.svg`}
                               alt="merged"
                               fill
                               unoptimized
@@ -61,7 +62,7 @@ export default function OpenSource() {
                           )}
                           {c.status === "open" && (
                             <Image
-                              src="https://assets.kaustubh.cloud/images/github-pr.svg"
+                              src={`${ASSETS_REPO}/images/github-pr.svg`}
                               alt="open"
                               fill
                               unoptimized
@@ -72,7 +73,7 @@ export default function OpenSource() {
                           )}
                           {c.status === "closed" && (
                             <Image
-                              src="https://assets.kaustubh.cloud/images/github-closed.svg"
+                              src={`${ASSETS_REPO}/images/github-closed.svg`}
                               alt="closed"
                               fill
                               unoptimized

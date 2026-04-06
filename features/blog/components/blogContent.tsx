@@ -8,6 +8,7 @@ import { Calendar, Clock } from "lucide-react";
 import { Panel, PanelContent } from "@/features/panel";
 import { calculateReadingTime } from "@/lib/readTime";
 import { Toolbar } from "./Toolbar";
+import { ASSETS_REPO } from "@/lib/constants";
 
 type BlogContentProps = {
   blog: Blog;
@@ -15,6 +16,10 @@ type BlogContentProps = {
 
 export default function BlogContent({ blog }: BlogContentProps) {
   const readingTime = calculateReadingTime(blog.content);
+  const imageUrl = blog.metadata.image?.startsWith("http")
+    ? blog.metadata.image
+    : `${ASSETS_REPO}${blog.metadata.image}`;
+
   return (
     <>
       <Toolbar url={getBlogUrl(blog)} type="blog" />
@@ -26,7 +31,7 @@ export default function BlogContent({ blog }: BlogContentProps) {
             <div className="p-px sm:p-4">
               <div className="relative overflow-hidden rounded-xl ring-0 ring-secondary-foreground/20 sm:ring-1">
                 <Image
-                  src={blog.metadata.image}
+                  src={imageUrl}
                   alt={blog.metadata.title}
                   width={1200}
                   height={630}

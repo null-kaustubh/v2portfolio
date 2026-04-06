@@ -1,3 +1,4 @@
+import { ASSETS_REPO } from "@/lib/constants";
 import type { User } from "../types/user";
 
 export const USER: User = {
@@ -38,7 +39,7 @@ Still learning. Still building. Every day, a little better.
 Let's connect and collaborate!
   `,
   avatar: "https://wallpapercave.com/wp/wp12731490.jpg",
-  ogImage: "https://assets.kaustubh.cloud/images/og-image.png",
+  ogImage: `${ASSETS_REPO}/images/og-image.png`,
   keywords: [
     "kaustubhsankhe",
     "kaustubh",

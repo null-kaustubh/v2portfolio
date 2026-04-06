@@ -11,6 +11,7 @@ import BlogContent from "@/features/blog/components/blogContent";
 import Footer from "@/features/footer/components/footer";
 import { getTableOfContents } from "@/lib/toc";
 import TableOfContents from "@/features/blog/components/tableOfContents";
+import { resolveImage } from "@/lib/constants";
 
 export const dynamic = "force-static";
 
@@ -40,7 +41,7 @@ export async function generateMetadata({
   const { title, description, image, createdAt, updatedAt } = blog.metadata;
 
   const blogUrl = getBlogUrl(blog);
-  const ogImage = image || "";
+  const ogImage = resolveImage(image);
 
   return {
     title,
@@ -138,7 +139,7 @@ function getBlogPageJsonLd(blog: Blog): WithContext<CreativeWork> {
       name: USER.displayName,
     },
 
-    image: blog.metadata.image,
+    image: resolveImage(blog.metadata.image),
   };
 }
 

@@ -1,54 +1,53 @@
+import { ASSETS_REPO } from "@/lib/constants";
 import { ExperienceList } from "../types/experienceType";
 
 export const Experience: ExperienceList = [
   {
     company: "Vidyalankar Institute of Technology",
-    logo: "https://assets.kaustubh.cloud/workplaces/VIT.png",
+    logo: `${ASSETS_REPO}/workplaces/VIT.png`,
     role: "B.E Electronics Engineering (Data Science Hons.)",
     employmentType: null,
     status: "ended",
     from: "2021-11",
     to: "2025-06",
     description: [
-      "Studied CS fundamentals with a strong focus on web development and real-world projects.",
+      "Built a strong foundation in computer science and data structures while developing multiple full-stack projects focused on real-world problem solving.",
     ],
   },
   {
     company: "Saint-Gobain INDEC",
-    logo: "https://assets.kaustubh.cloud/workplaces/INDEC.png",
+    logo: `${ASSETS_REPO}/workplaces/INDEC.png`,
     role: "Salesforce Developer",
     employmentType: "internship",
     status: "ended",
     from: "2024-08",
     to: "2024-12",
     description: [
-      "Automated workflows with Salesforce Flows, built reports and dashboards.",
-      "supported a production go-live, and worked with Apex and Salesforce administration.",
+      "Automated business workflows and built dashboards using Salesforce, contributing to a production go-live while working with Apex and platform tools.",
     ],
   },
   {
     company: "AlterIt",
-    logo: "https://assets.kaustubh.cloud/workplaces/Freelance.png",
+    logo: `${ASSETS_REPO}/workplaces/Freelance.png`,
     role: "Fullstack Developer",
     employmentType: "freelance",
     status: "ended",
     from: "2024-07",
     to: "2026-02",
     description: [
-      "Built and delivered client-facing web applications with modern stacks, focused on SEO improvements, performance optimization, codebase refactoring.",
-      "ongoing Wix and WordPress maintenance.",
+      "Built and optimized full-stack applications for clients, driving performance, SEO improvements, and scalable architecture across modern web stacks.",
     ],
   },
   {
     company: "Accelya",
-    logo: "https://assets.kaustubh.cloud/workplaces/accelya.png",
+    logo: `${ASSETS_REPO}/workplaces/accelya.png`,
     role: "Software Development Engineer - 1",
     employmentType: "fulltime",
     status: "active",
     from: "2025-09",
     to: null,
     description: [
-      "Working on enterprise backend systems using core Java and large-scale legacy codebases.",
+      "Shipping production-grade backend features for Swiss airline LX’s cargo platform, debugging complex enterprise systems and ensuring stable, high-quality releases.",
     ],
   },
 ];

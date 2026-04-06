@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ProjectTypes } from "../types/projectTypes";
+import { resolveImage } from "@/lib/constants";
 
 type ProjectItemProps = {
   project: ProjectTypes;
@@ -21,7 +22,7 @@ export default function ProjectItemPortfolio({ project }: ProjectItemProps) {
         {/* Image */}
         <div className="bg-border w-full aspect-[1.4/1] border-b border-border overflow-hidden transition-[filter] grayscale-75 group-hover:grayscale-0 duration-500">
           <Image
-            src={project.image}
+            src={resolveImage(project.image)}
             alt={project.title}
             fill
             sizes="(min-width: 768px) 50vw, 100vw"

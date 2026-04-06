@@ -15,6 +15,7 @@ import {
   getAllProjects,
   getProjectBySlug,
 } from "@/features/project/data/projects";
+import { resolveImage } from "@/lib/constants";
 
 export const dynamic = "force-static";
 
@@ -45,7 +46,7 @@ export async function generateMetadata({
   const { title, description, image, createdAt, updatedAt } = project.metadata;
 
   const projectUrl = getProjectUrl(project);
-  const ogImage = image || "";
+  const ogImage = resolveImage(image);
 
   return {
     title,
@@ -146,7 +147,7 @@ function getProjectPageJsonLd(project: Project): WithContext<CreativeWork> {
     image: project.metadata.image
       ? {
           "@type": "ImageObject",
-          url: project.metadata.image,
+          url: resolveImage(project.metadata.image),
         }
       : undefined,
   };
