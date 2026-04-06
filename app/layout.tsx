@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   creator: "nullkaustubh",
   openGraph: {
     siteName: SITE_INFO.name,
-    url: "/",
+    url: SITE_INFO.url,
     type: "profile",
     firstName: `${USER.firstName}`,
     lastName: `${USER.lastName}`,
