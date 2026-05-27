@@ -19,6 +19,7 @@ export const getProjectPreviews = cache((): ProjectPreview[] => {
     image: project.metadata.image,
     githubUrl: project.metadata.githubUrl,
     liveUrl: project.metadata.liveUrl,
+    productHunt: project.metadata.productHunt,
   }));
 
   return previews.sort((a, b) => {

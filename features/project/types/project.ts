@@ -32,6 +32,10 @@ export type ProjectMetadata = {
    * Live URL for the project.
    */
   liveUrl: string;
+  /**
+   * ProductHunt URL if launched.
+   */
+  productHunt?: string;
 };
 
 export type GithubStats = {
@@ -67,4 +71,5 @@ export type ProjectPreview = {
   tech: string[];
   date: string;
   image: string;
+  productHunt?: string;
 };

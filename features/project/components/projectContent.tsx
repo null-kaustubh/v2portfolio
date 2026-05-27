@@ -87,7 +87,62 @@ export default function ProjectContent({ project }: ProjectContentProps) {
                   </div>
                 </div>
                 <div className="flex items-center justify-between screen-line-before">
-                  <div className="px-4">
+                  <div className="px-4 flex gap-3">
+                    {project.metadata.productHunt && (
+                      <a
+                        href={project.metadata.productHunt}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ph-btn hover:text-selection transition-colors relative overflow-hidden rounded-full"
+                        style={{
+                          display: "inline-flex",
+                          position: "relative",
+                          overflow: "hidden",
+                          borderRadius: "50%",
+                        }}
+                      >
+                        <style>{`
+                          .ph-btn::after {
+                            content: '';
+                            position: absolute;
+                            top: -50%;
+                            left: -75%;
+                            width: 50%;
+                            height: 200%;
+                            background: linear-gradient(
+                              120deg,
+                              transparent 0%,
+                              rgba(255,255,255,0.55) 50%,
+                              transparent 100%
+                            );
+                            transform: skewX(-20deg);
+                            animation: ph-shine 2.8s ease-in-out infinite;
+                          }
+                          @keyframes ph-shine {
+                            0%   { left: -75%; }
+                            35%  { left: 125%; }
+                            100% { left: 125%; }
+                          }
+                        `}</style>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 40 40"
+                        >
+                          <g fill="none" fillRule="evenodd">
+                            <path
+                              fill="#FF6154"
+                              d="M40 20c0 11.046-8.954 20-20 20S0 31.046 0 20 8.954 0 20 0s20 8.954 20 20"
+                            ></path>
+                            <path
+                              fill="#FFF"
+                              d="M22.667 20H17v-6h5.667a3 3 0 0 1 0 6m0-10H13v20h4v-6h5.667a7 7 0 1 0 0-14"
+                            ></path>
+                          </g>
+                        </svg>
+                      </a>
+                    )}
                     {project.metadata.githubUrl && (
                       <a
                         href={project.metadata.githubUrl}
