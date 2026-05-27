@@ -10,4 +10,5 @@ export type ProjectTypes = {
   date?: string;
   githubUrl?: string;
   liveUrl?: string;
+  productHunt?: string;
 };
