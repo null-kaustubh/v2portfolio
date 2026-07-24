@@ -1,4 +1,4 @@
-export const ASSETS_REPO = "https://assets.kaustubh.cloud";
+export const ASSETS_REPO = "https://assets.1xkaustubh.com";
 
 export function resolveImage(src?: string) {
   if (!src) return "";

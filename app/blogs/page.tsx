@@ -9,9 +9,32 @@ import { SITE_INFO } from "@/config/site";
 import Footer from "@/features/footer/components/footer";
 import BlogPage from "@/features/blog/components/blogPage";
 
+const BLOGS_DESCRIPTION =
+  "A collection of thoughts written by " + USER.displayName;
+
 export const metadata: Metadata = {
   title: "Blogs",
-  description: "A collection of thoughts written by " + USER.displayName,
+  description: BLOGS_DESCRIPTION,
+  alternates: {
+    canonical: "/blogs",
+  },
+  openGraph: {
+    title: `Blogs - ${SITE_INFO.name}`,
+    description: BLOGS_DESCRIPTION,
+    siteName: SITE_INFO.name,
+    locale: "en_US",
+    url: "/blogs",
+    type: "website",
+    images: [
+      { url: SITE_INFO.ogImage, width: 1200, height: 630, alt: SITE_INFO.name },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Blogs - ${SITE_INFO.name}`,
+    description: BLOGS_DESCRIPTION,
+    images: [SITE_INFO.ogImage],
+  },
 };
 
 const blogs = getBlogPreviews();
@@ -53,11 +76,13 @@ function getBlogsPageJsonLd(): WithContext<CollectionPage> {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Blogs",
-    description: "A collection of thoughts written by " + USER.displayName,
+    description: BLOGS_DESCRIPTION,
+    url: `${SITE_INFO.url}/blogs`,
     dateModified: dayjs().toISOString(),
     inLanguage: "en",
     mainEntity: {
       "@type": "ItemList",
+      numberOfItems: blogs.length,
       itemListElement: blogs.map((blog, index) => ({
         "@type": "ListItem",
         position: index + 1,

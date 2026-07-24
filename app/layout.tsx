@@ -24,6 +24,8 @@ export const metadata: Metadata = {
   },
   description: SITE_INFO.description,
   keywords: SITE_INFO.keywords,
+  applicationName: SITE_INFO.name,
+  category: "technology",
   authors: [
     {
       name: "nullkaustubh",
@@ -31,10 +33,40 @@ export const metadata: Metadata = {
     },
   ],
   creator: "nullkaustubh",
+  publisher: USER.displayName,
+  manifest: "/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      // Lets Google show full-size image and untruncated snippets in results.
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
   openGraph: {
     siteName: SITE_INFO.name,
     url: SITE_INFO.url,
     type: "profile",
+    locale: "en_US",
+    title: `${USER.displayName} - ${USER.jobTitle}`,
+    description: SITE_INFO.description,
     firstName: `${USER.firstName}`,
     lastName: `${USER.lastName}`,
     username: `${USER.username}`,
@@ -50,7 +82,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@kaustubh_sankhe",
     creator: "@kaustubh_sankhe", // Twitter username
+    title: `${USER.displayName} - ${USER.jobTitle}`,
+    description: SITE_INFO.description,
     images: [SITE_INFO.ogImage],
   },
 };
@@ -59,7 +94,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: META_THEME_COLORS.dark,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: META_THEME_COLORS.light },
+    { media: "(prefers-color-scheme: dark)", color: META_THEME_COLORS.dark },
+  ],
 };
 
 export default async function RootLayout({

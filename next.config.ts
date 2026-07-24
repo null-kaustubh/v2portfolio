@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "assets.kaustubh.cloud",
+        hostname: "assets.1xkaustubh.com",
         pathname: "/**",
       },
       {

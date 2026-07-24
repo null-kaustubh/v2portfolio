@@ -41,7 +41,7 @@ export async function generateMetadata({
   const { title, description, image, createdAt, updatedAt } = blog.metadata;
 
   const blogUrl = getBlogUrl(blog);
-  const ogImage = resolveImage(image);
+  const ogImage = image ? resolveImage(image) : SITE_INFO.ogImage;
 
   return {
     title,
@@ -50,6 +50,12 @@ export async function generateMetadata({
       canonical: blogUrl,
     },
     openGraph: {
+      title,
+      description,
+      // `openGraph` replaces (not merges with) the root layout's, so
+      // siteName/locale must be repeated on every page that sets it.
+      siteName: SITE_INFO.name,
+      locale: "en_US",
       url: blogUrl,
       type: "article",
       images: [
@@ -60,11 +66,14 @@ export async function generateMetadata({
           alt: title,
         },
       ],
+      authors: [USER.displayName],
       publishedTime: new Date(createdAt).toISOString(),
       modifiedTime: new Date(updatedAt).toISOString(),
     },
     twitter: {
       card: "summary_large_image",
+      title,
+      description,
       images: [ogImage],
     },
   };
@@ -121,6 +130,11 @@ function getBlogPageJsonLd(blog: Blog): WithContext<CreativeWork> {
     headline: blog.metadata.title,
     description: blog.metadata.description,
     url: `${SITE_INFO.url}${getBlogUrl(blog)}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_INFO.url}${getBlogUrl(blog)}`,
+    },
+    wordCount: blog.content.trim().split(/\s+/).length,
 
     datePublished: new Date(blog.metadata.createdAt).toISOString(),
     dateModified: new Date(blog.metadata.updatedAt).toISOString(),

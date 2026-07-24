@@ -54,7 +54,14 @@ export async function generateMetadata({
     alternates: {
       canonical: projectUrl,
     },
+    keywords: project.metadata.tech,
     openGraph: {
+      title,
+      description,
+      // `openGraph` replaces (not merges with) the root layout's, so
+      // siteName/locale must be repeated on every page that sets it.
+      siteName: SITE_INFO.name,
+      locale: "en_US",
       url: projectUrl,
       type: "article",
       images: [
@@ -65,11 +72,15 @@ export async function generateMetadata({
           alt: title,
         },
       ],
+      authors: [USER.displayName],
+      tags: project.metadata.tech,
       publishedTime: new Date(createdAt).toISOString(),
       modifiedTime: new Date(updatedAt).toISOString(),
     },
     twitter: {
       card: "summary_large_image",
+      title,
+      description,
       images: [ogImage],
     },
   };
@@ -124,6 +135,11 @@ function getProjectPageJsonLd(project: Project): WithContext<CreativeWork> {
     name: project.metadata.title,
     description: project.metadata.description,
     url: `${SITE_INFO.url}/projects/${project.slug}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_INFO.url}/projects/${project.slug}`,
+    },
+    inLanguage: "en",
 
     dateCreated: project.metadata.createdAt
       ? dayjs(project.metadata.createdAt).toISOString()
