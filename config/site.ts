@@ -3,7 +3,7 @@ import type { NavItem } from "@/types/nav";
 
 export const SITE_INFO = {
   name: USER.displayName,
-  url: "https://kaustubh.cloud",
+  url: "https://1xkaustubh.com",
   ogImage: USER.ogImage,
   description: USER.bio,
   keywords: USER.keywords,
@@ -26,7 +26,7 @@ export const SOURCE_CODE_GITHUB_URL =
   "https://github.com/null-kaustubh/v2portfolio.git";
 
 export const UTM_PARAMS = {
-  utm_source: "kaustubh.cloud",
+  utm_source: "1xkaustubh.com",
   utm_medium: "portfolio_website",
   utm_campaign: "referral",
 };
