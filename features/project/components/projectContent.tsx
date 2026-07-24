@@ -27,7 +27,7 @@ export default function ProjectContent({ project }: ProjectContentProps) {
         <header className="screen-line-before">
           {project.metadata.image && (
             <div className="p-px sm:p-4">
-              <div className="relative overflow-hidden rounded-xl ring-0 ring-secondary-foreground/20 sm:ring-1">
+              <div className="relative overflow-hidden rounded-none ring-0 ring-secondary-foreground/20 sm:rounded-xl sm:ring-1">
                 <Image
                   src={resolveImage(project.metadata.image)}
                   alt={project.metadata.title}

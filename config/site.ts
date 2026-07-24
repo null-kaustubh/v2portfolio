@@ -10,8 +10,22 @@ export const SITE_INFO = {
 };
 
 export const META_THEME_COLORS = {
+  light: "#fafaf9",
   dark: "#09090b",
 };
+
+/**
+ * Canonical profile URLs used for schema.org `sameAs`.
+ * Keep in sync with `features/portfolio/socials/links.tsx` (which holds the
+ * same URLs alongside JSX icons and so can't be imported from metadata code).
+ */
+export const SOCIAL_PROFILES = [
+  "https://github.com/null-kaustubh",
+  "https://www.linkedin.com/in/kaustubhsankhe/",
+  "https://x.com/kaustubh_sankhe",
+  "https://leetcode.com/u/nullkaustubh/",
+  "https://in.pinterest.com/v0idzn/",
+];
 
 export const MAIN_NAV: NavItem[] = [
   {

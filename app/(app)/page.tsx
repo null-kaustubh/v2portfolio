@@ -6,6 +6,7 @@ import { USER } from "@/features/portfolio/profile/data/user";
 import { cn } from "@/lib/utils";
 import dayjs from "dayjs";
 import { ProfilePage as PageSchema, WithContext } from "schema-dts";
+import { SITE_INFO, SOCIAL_PROFILES } from "@/config/site";
 import Hero from "@/features/portfolio/hero/hero";
 import SocialLinksSkeleton from "@/features/portfolio/socials/socialSkeleton";
 import CareerSkeleton from "@/features/portfolio/career-path/components/careerSkeleton";
@@ -157,16 +158,43 @@ export default function Page() {
 }
 
 function getPageJsonLd(): WithContext<PageSchema> {
+  const [primaryJob] = USER.jobs;
+  const [locality, country] = USER.address.split(",").map((s) => s.trim());
+
   return {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
+    url: SITE_INFO.url,
+    name: `${USER.displayName} - ${USER.jobTitle}`,
+    description: SITE_INFO.description,
+    inLanguage: "en",
     dateCreated: dayjs(USER.dateCreated).toISOString(),
     dateModified: dayjs().toISOString(),
     mainEntity: {
       "@type": "Person",
       name: USER.displayName,
+      givenName: USER.firstName,
+      familyName: USER.lastName,
+      alternateName: USER.username,
       identifier: USER.username,
+      description: USER.bio,
       image: USER.avatar,
+      url: SITE_INFO.url,
+      jobTitle: USER.jobTitle,
+      knowsAbout: USER.keywords,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: locality,
+        addressCountry: country,
+      },
+      ...(primaryJob?.company && {
+        worksFor: {
+          "@type": "Organization",
+          name: primaryJob.company,
+          ...(primaryJob.website && { url: primaryJob.website }),
+        },
+      }),
+      sameAs: SOCIAL_PROFILES,
     },
   };
 }

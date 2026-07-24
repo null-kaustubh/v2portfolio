@@ -4,14 +4,37 @@ import dayjs from "dayjs";
 import { USER } from "@/features/portfolio/profile/data/user";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
-import { projects } from "@/features/portfolio/projects/data/projects";
+import { getProjectPreviews } from "@/features/portfolio/projects/data/projects";
 import { SITE_INFO } from "@/config/site";
 import ProjectPageSsr from "@/features/project/components/projectPage";
 import Footer from "@/features/footer/components/footer";
 
+const PROJECTS_DESCRIPTION =
+  "A collection of projects built by " + USER.displayName;
+
 export const metadata: Metadata = {
   title: "Projects",
-  description: "A collection of projects built by " + USER.displayName,
+  description: PROJECTS_DESCRIPTION,
+  alternates: {
+    canonical: "/projects",
+  },
+  openGraph: {
+    title: `Projects - ${SITE_INFO.name}`,
+    description: PROJECTS_DESCRIPTION,
+    siteName: SITE_INFO.name,
+    locale: "en_US",
+    url: "/projects",
+    type: "website",
+    images: [
+      { url: SITE_INFO.ogImage, width: 1200, height: 630, alt: SITE_INFO.name },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Projects - ${SITE_INFO.name}`,
+    description: PROJECTS_DESCRIPTION,
+    images: [SITE_INFO.ogImage],
+  },
 };
 
 export default function ProjectsPage() {
@@ -50,14 +73,19 @@ export default function ProjectsPage() {
 }
 
 function getProjectsPageJsonLd(): WithContext<CollectionPage> {
+  const projects = getProjectPreviews();
+
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Projects",
-    description: "A collection of projects built by " + USER.displayName,
+    description: PROJECTS_DESCRIPTION,
+    url: `${SITE_INFO.url}/projects`,
+    inLanguage: "en",
     dateModified: dayjs().toISOString(),
     mainEntity: {
       "@type": "ItemList",
+      numberOfItems: projects.length,
       itemListElement: projects.map((project, index) => ({
         "@type": "ListItem",
         position: index + 1,
